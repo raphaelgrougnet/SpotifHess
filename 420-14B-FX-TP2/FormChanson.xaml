@@ -27,7 +27,7 @@
                    FontSize="20" VerticalAlignment="Stretch"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
-            <Label Name="lblTitre" Content="Titre" FontSize="15"/>
+            <Label Name="lblTitre" Content="Titre" FontSize="13"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Width="240" VerticalAlignment="Center" HorizontalAlignment="Left">
             <TextBox x:Name="txtTitre"/>
@@ -36,7 +36,7 @@
 
 
         <StackPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
-            <Label Name="lblStyle" Content="Style" FontSize="15"/>
+            <Label Name="lblStyle" Content="Style" FontSize="13"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
             <ComboBox Name="cboStyle">
@@ -46,7 +46,7 @@
 
 
         <StackPanel Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
-            <Label Name="lblDuree" Content="Durée" FontSize="15"/>
+            <Label Name="lblDuree" Content="Durée" FontSize="13"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5">
             <Label Content="..." FontSize="15"/>
@@ -55,7 +55,7 @@
 
 
         <StackPanel Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
-            <Label Content="Fichier" FontSize="15"/>
+            <Label Content="Fichier" FontSize="13"/>
         </StackPanel>
         <StackPanel Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5">
             <Label Name="lblFichier" Content="..." FontSize="15"/>
