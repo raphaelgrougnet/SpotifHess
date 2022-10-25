@@ -173,6 +173,7 @@ namespace TP2_420_14B_FX.Classes
         {
             get
             {
+                //todo Obtenir le nb de chansons
                 throw new NotImplementedException();
             }
         }

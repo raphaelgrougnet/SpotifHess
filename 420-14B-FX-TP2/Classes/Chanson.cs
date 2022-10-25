@@ -200,8 +200,10 @@ namespace TP2_420_14B_FX.Classes
 
         public override string ToString()
         {
-            //todo : finir la methode ToString
-            return base.ToString();
+            string tempTitre = Titre.PadRight(40 - Titre.Length);
+            string tempStyle = Style.ToString().PadRight(20 - Style.ToString().Length);
+
+            return String.Format(tempTitre + tempTitre + Duree);
         }
 
         #endregion
