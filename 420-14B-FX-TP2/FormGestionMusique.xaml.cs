@@ -405,9 +405,16 @@ namespace TP2_420_14B_FX
         /// <remarks>L'album sélectionné ne peut pas être nul. Le lecteur de musique doit être réinitialisé.</remarks>
         private void AfficherListeChansons()
         {
-
-            //Implémenter la méthode AfficherListeChansons
-            throw new NotImplementedException();
+            if (lstAlbums.SelectedIndex != 1)
+            {
+                Album albumSelected = (Album)lstAlbums.SelectedItem;
+                for (int i = 0; i < albumSelected.NbChansons; i++)
+                {
+                    lstChansons.Items.Add(albumSelected.ObtenirChanson(i));
+                }
+            }
+            
+            
 
         }
 
