@@ -193,6 +193,23 @@ namespace TP2_420_14B_FX.Classes
         {
             return _chansons[index];
         }
+
+        /// <summary>
+        /// Permet d'obtenir la chanson suivante en fonction de si le mode aléatoire est activé ou non
+        /// </summary>
+        /// <returns>Si la chanson jouée est la dernière et que le mode aléatoire est désactivé, retourne la première chanson, sinon la chanson suivante</returns>
+        public Chanson ObtenirChansonSuivante()
+        {
+            if (!Aleatoire)
+            {
+                if (lamusiquejouee == Laderniere)
+                {
+                    return ObtenirChanson(0);
+                }
+                return ObtenirChanson(lamusiquejouee.index + 1);
+            }
+            return ObtenirChanson(ObtenirPositionAletoire());
+        }
         #endregion
 
 
