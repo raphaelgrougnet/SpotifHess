@@ -202,11 +202,11 @@ namespace TP2_420_14B_FX.Classes
         {
             if (!Aleatoire)
             {
-                if (lamusiquejouee == Laderniere)
+                if (Position == NbChansons-1)
                 {
                     return ObtenirChanson(0);
                 }
-                return ObtenirChanson(lamusiquejouee.index + 1);
+                return ObtenirChanson((byte)(Position + 1));
             }
             return ObtenirChanson(ObtenirPositionAletoire());
         }
