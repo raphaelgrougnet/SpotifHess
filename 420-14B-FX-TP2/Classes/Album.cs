@@ -180,11 +180,19 @@ namespace TP2_420_14B_FX.Classes
         #endregion
 
         #region CONSTRUCTEURS
-      
+
         #endregion
 
         #region MÉTHODES
-       
+        /// <summary>
+        /// Permet d'obtenir une chanson grâce a l'index donné
+        /// </summary>
+        /// <param name="index">index de la chanson</param>
+        /// <returns>La chanson sélectionnée grâce à son index</returns>
+        public Chanson ObtenirChanson(byte index)
+        {
+            return _chansons[index];
+        }
         #endregion
 
 
