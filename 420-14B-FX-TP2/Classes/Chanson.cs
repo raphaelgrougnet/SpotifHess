@@ -200,6 +200,7 @@ namespace TP2_420_14B_FX.Classes
 
         public override string ToString()
         {
+            //todo : finir la methode ToString
             return base.ToString();
         }
 
