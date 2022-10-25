@@ -81,7 +81,7 @@ namespace TP2_420_14B_FX
         /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-          
+            GestionMusique _gestionMusique = new GestionMusique();
             //todo: Afficher la liste des albums.
      
         }

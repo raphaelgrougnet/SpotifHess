@@ -41,6 +41,7 @@ namespace TP2_420_14B_FX.Classes
         /// Nom du fichier de la chanson
         /// </summary>
         private string _fichier;
+
         #endregion
 
         #region PROPRIÉTÉS ET INDEXEURS
@@ -54,8 +55,12 @@ namespace TP2_420_14B_FX.Classes
             get { return _id; }
             set
             {
-                //todo : implémenter la validation
-                _id = value;
+                //todo : implémenter la validation FAIT
+                if (value != null)
+                {
+                    _id = value;
+                }
+                
             }
         }
 
@@ -69,8 +74,12 @@ namespace TP2_420_14B_FX.Classes
             get { return _titre; }
             set
             {
-                //todo : implémenter la validation
-                _titre = value.Trim();
+                if (!String.IsNullOrWhiteSpace(value))
+                {
+                    _titre = value.Trim();
+                }
+                //todo : implémenter la validation FAIT
+                
             }
         }
 
@@ -84,7 +93,54 @@ namespace TP2_420_14B_FX.Classes
             get { return _style; }
             set
             {
-                _style = value;
+                //todo : implémenter la validation FAIT
+                switch (value)
+                {
+                    case StyleMusical.Country:
+                        _style = value;
+                        break;
+                    case StyleMusical.Dubstep:
+                        _style = value;
+                        break;
+                    case StyleMusical.Electronic:
+                        _style = value;
+                        break;
+                    case StyleMusical.Fork:
+                        _style = value;
+                        break;
+                    case StyleMusical.HipHop:
+                        _style = value;
+                        break;
+                    case StyleMusical.IndieRock:
+                        _style = value;
+                        break;
+                    case StyleMusical.Jazz:
+                        _style = value;
+                        break;
+                    case StyleMusical.Metal:
+                        _style = value;
+                        break;
+                    case StyleMusical.Pop:
+                        _style = value;
+                        break;
+                    case StyleMusical.Punk:
+                        _style = value;
+                        break;
+                    case StyleMusical.RB:
+                        _style = value;
+                        break;
+                    case StyleMusical.Rock:
+                        _style = value;
+                        break;
+                    case StyleMusical.Reggae:
+                        _style = value;
+                        break;
+                    case StyleMusical.Techno:
+                        _style = value;
+                        break;
+                    
+                }
+                
             }
         }
 
@@ -98,9 +154,12 @@ namespace TP2_420_14B_FX.Classes
 
             set
             {
-                //todo : implémenter la validation
-
-                _duree = value;
+                //todo : implémenter la validation FAIT
+                if (value != null)
+                {
+                    _duree = value;
+                }
+               
             }
         }
 
@@ -113,20 +172,37 @@ namespace TP2_420_14B_FX.Classes
             get { return _fichier; }
             set
             {
-                //todo : implémenter la validation
-
-                _fichier = value.Trim();
+                //todo : implémenter la validation FAIT
+                if (!String.IsNullOrWhiteSpace(value))
+                {
+                    _fichier = value.Trim();
+                }
             }
         }
+
+
         #endregion
-        
+
         #region CONSTRUCTEURS   
-        
+
+        public Chanson(Guid id, string titre, StyleMusical style, TimeSpan duree, string fichier)
+        {
+            Id = id;
+            Titre = titre;
+            Style = style;
+            Duree = duree;
+            Fichier = fichier;
+        }
 
         #endregion
 
         #region MÉTHODES
-        
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
         #endregion
 
 
