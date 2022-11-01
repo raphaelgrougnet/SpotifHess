@@ -92,8 +92,16 @@ namespace TP2_420_14B_FX.Classes
             get { return _id; }
             set
             {
-               //todo: Implémenter la validation
-                _id = value;
+
+                if (value != Guid.Empty)
+                {
+                    _id = value;
+                }
+                else
+                {
+                    throw new ArgumentNullException("Guid", "Le Guid ne peut pas être nulle");
+                }
+                
             }
         }
 
@@ -106,8 +114,15 @@ namespace TP2_420_14B_FX.Classes
             get { return _titre; }
             set
             {
-                //todo: Implémenter la validation
-                _titre = value;
+                if (!String.IsNullOrWhiteSpace(value.Trim()))
+                {
+                    _titre = value.Trim();
+                }
+                else
+                {
+                    throw new ArgumentNullException("Titre", "Le titre ne peut pas être vide, nulle ou ne contenir que des espaces");
+                }
+               
             }
         }
 
@@ -119,8 +134,15 @@ namespace TP2_420_14B_FX.Classes
             get { return _annee; }
             set
             {
-                //todo: Implémenter la validation
-                _annee = value;
+                if (value >= 1500 && value <= DateTime.Now.Year)
+                {
+                    _annee = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("Année", $"L'année doit être comprise entre 1500 et {DateTime.Now.Year}");
+                }
+                
             }
         }
 
@@ -133,8 +155,14 @@ namespace TP2_420_14B_FX.Classes
             get { return _image; }
             set
             {
-                //todo: Implémenter la validation
-                _image = value.Trim();
+                if (!String.IsNullOrWhiteSpace(value.Trim()))
+                {
+                    _image = value.Trim();
+                }
+                else
+                {
+                    throw new ArgumentNullException("Titre", "Le titre ne peut pas être vide, nulle ou ne contenir que des espaces");
+                }
             }
         }
 
@@ -147,8 +175,15 @@ namespace TP2_420_14B_FX.Classes
             get { return _artiste; }
             set
             {
-                //todo: Implémenter la validation
-                _artiste = value;
+                if (!String.IsNullOrWhiteSpace(value.Trim()))
+                {
+                    _artiste = value.Trim();
+                }
+                else
+                {
+                    throw new ArgumentNullException("Artiste", "Le nom de l'artiste ne peut pas être vide, nulle ou ne contenir que des espaces");
+                }
+                
             }
         }
 
@@ -159,9 +194,12 @@ namespace TP2_420_14B_FX.Classes
         {
             get
             {
-
-                //todo: Implémenter la validation
-                throw new NotImplementedException();
+                TimeSpan duree = TimeSpan.Parse("00:00:00");
+                foreach (Chanson chanson in _chansons)
+                {
+                    duree += chanson.Duree;
+                }
+                return duree;
             }
 
         }
@@ -173,8 +211,8 @@ namespace TP2_420_14B_FX.Classes
         {
             get
             {
-                //todo Obtenir le nb de chansons
-                throw new NotImplementedException();
+                
+                return (byte)_chansons.Count;
             }
         }
 
@@ -209,7 +247,7 @@ namespace TP2_420_14B_FX.Classes
                 }
                 return ObtenirChanson((byte)(Position + 1));
             }
-            return ObtenirChanson(ObtenirPositionAletoire());
+            return ObtenirChanson(ObtenirPositionAleatoire());
         }
         #endregion
 
