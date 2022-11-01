@@ -473,7 +473,7 @@ namespace TP2_420_14B_FX
 
              
                 //todo: obtenir le nom du fichier pour l'ouverture.
-                string fichier = "";
+                string fichier = chanson.Fichier;
 
                 //Overture du fichier
                 _mediaPlayer.Open(new Uri(fichier));

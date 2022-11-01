@@ -68,6 +68,7 @@ namespace TP2_420_14B_FX.Classes
 
             foreach (string ligne in vectDonnesChansons)
             {
+                ///Fragmentation de la ligne en string
                 ligneSplited = ligne.Split();
                 Guid guid = new Guid(ligneSplited[0]);
                 string titre = ligneSplited[1];
