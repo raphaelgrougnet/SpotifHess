@@ -496,8 +496,11 @@ namespace TP2_420_14B_FX
         /// <remarks>L'album et la chanson sélectionné ne peuvent doivent pas êtres nuls</remarks>
         private void JouerChansonSelectionnee()
         {
-            //Implémenter la méthode JouerChansonSelectionnee
-            throw new NotImplementedException();
+            if (lstAlbums.SelectedItem != null && lstChansons.SelectedItem != null)
+            {
+                Chanson selectChanson = (Chanson)lstChansons.SelectedItem;
+                JouerChanson(selectChanson);
+            }
         }
 
         /// <summary>
