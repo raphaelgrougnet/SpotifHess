@@ -247,7 +247,7 @@ namespace TP2_420_14B_FX.Classes
                 }
                 return ObtenirChanson((byte)(Position + 1));
             }
-            return ObtenirChanson(ObtenirPositionAletoire());
+            return ObtenirChanson(ObtenirPositionAleatoire());
         }
         #endregion
 
