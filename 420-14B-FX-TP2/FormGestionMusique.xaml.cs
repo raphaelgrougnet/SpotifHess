@@ -496,9 +496,9 @@ namespace TP2_420_14B_FX
         /// <remarks>L'album et la chanson sélectionné ne peuvent doivent pas êtres nuls</remarks>
         private void JouerChansonSelectionnee()
         {
-            if (lstAlbums.SelectedItem != null && lstChansons.SelectedItem != null)
+            if (lstAlbums.SelectedItem != null)
             {
-                Chanson selectChanson = (Chanson)lstChansons.SelectedItem;
+                Chanson selectChanson = ((Album) lstAlbums.SelectedItem).ObtenirChanson((byte)lstAlbums.SelectedIndex);
                 JouerChanson(selectChanson);
             }
         }
@@ -519,8 +519,11 @@ namespace TP2_420_14B_FX
         /// </summary>
         private void JouerChansonSuivante()
         {
-            //Implémenter la méthode JouerChansonSuivante
-            throw new NotImplementedException();
+            if (lstAlbums.SelectedItem != null)
+            {
+                Chanson nextSong = ((Album)lstAlbums.SelectedItem).ObtenirChansonSuivante();
+            }
+            
         }
 
         #endregion
