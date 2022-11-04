@@ -408,7 +408,7 @@ namespace TP2_420_14B_FX
             if (lstAlbums.SelectedIndex != 1)
             {
                 Album albumSelected = (Album)lstAlbums.SelectedItem;
-                for (int i = 0; i < albumSelected.NbChansons; i++)
+                for (byte i = 0; i < albumSelected.NbChansons; i++)
                 {
                     lstChansons.Items.Add(albumSelected.ObtenirChanson(i));
                 }
@@ -522,6 +522,7 @@ namespace TP2_420_14B_FX
             if (lstAlbums.SelectedItem != null)
             {
                 Chanson nextSong = ((Album)lstAlbums.SelectedItem).ObtenirChansonSuivante();
+                JouerChanson(nextSong);
             }
             
         }
