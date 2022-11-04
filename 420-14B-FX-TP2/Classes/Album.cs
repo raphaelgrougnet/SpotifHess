@@ -216,7 +216,6 @@ namespace TP2_420_14B_FX.Classes
         {
             get
             {
-                
                 return (byte)_chansons.Count;
             }
         }
@@ -235,7 +234,17 @@ namespace TP2_420_14B_FX.Classes
         /// <returns>La chanson sélectionnée grâce à son index</returns>
         public Chanson ObtenirChanson(byte index)
         {
-            return _chansons[index];
+            if (index > NbChansons)
+            {
+                throw new IndexOutOfRangeException("L'index dépasse le nombre de chansons");
+            }
+            else
+            {
+                _position = index;
+                return _chansons[index];
+            }
+               
+            
         }
 
         /// <summary>

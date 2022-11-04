@@ -43,9 +43,13 @@ namespace TP2_420_14B_FX.Classes
         #endregion
 
         #region MÉTHODES
+
+        /// <summary>
+        /// Permet de charger toutes les chansons (contenues dans les fichiers sources) dans une List.
+        /// </summary>
         private void ChargerChansons()
         {
-            //Je supprime la première ligne innutile
+            //Je supprime la première ligne inutile
             string[] vectDonnesChansons = Utilitaire.ChargerDonnees(CHEMIN_FICHIER_CHANSONS);
 
             string[] newVectDonneesChansons = new string[vectDonnesChansons.Length - 1];

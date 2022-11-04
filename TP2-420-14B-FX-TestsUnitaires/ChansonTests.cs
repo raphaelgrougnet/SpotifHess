@@ -21,7 +21,7 @@ namespace TP2_420_14B_FX_TestsUnitaires
             Chanson chanson = CreerChanson();
 
             //Act and Assert
-            Assert.Throws<ArgumentException>(() => new Chanson(Guid.Empty, "Une chanson", TP2_420_14B_FX.Enums.StyleMusical.Country, new TimeSpan(0, 1, 0), "unechanson.mp3"));
+            Assert.Throws<ArgumentNullException>(() => new Chanson(Guid.Empty, "Une chanson", TP2_420_14B_FX.Enums.StyleMusical.Country, new TimeSpan(0, 1, 0), "unechanson.mp3"));
         }
 
        
