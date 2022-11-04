@@ -10,7 +10,12 @@ namespace TP2_420_14B_FX.Classes
     {
 
         #region CONSTANTES
-       
+
+        /// <summary>
+        /// L'année minimum que année peut prendre
+        /// </summary>
+        public const ushort ANNEE_MIN = 1500;
+
 
         #endregion
 
