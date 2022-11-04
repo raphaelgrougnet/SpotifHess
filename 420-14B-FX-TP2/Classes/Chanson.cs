@@ -185,6 +185,14 @@ namespace TP2_420_14B_FX.Classes
 
         #region CONSTRUCTEURS   
 
+        /// <summary>
+        /// Constructeur de chanson
+        /// </summary>
+        /// <param name="id">L'id de la chanson</param>
+        /// <param name="titre">Titre de la chanson</param>
+        /// <param name="style">Style de la chanson</param>
+        /// <param name="duree">Durée de la chanson</param>
+        /// <param name="fichier">Lien d'accès au fichier de la chanson</param>
         public Chanson(Guid id, string titre, StyleMusical style, TimeSpan duree, string fichier)
         {
             Id = id;

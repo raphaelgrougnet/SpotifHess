@@ -139,7 +139,7 @@ namespace TP2_420_14B_FX.Classes
             get { return _annee; }
             set
             {
-                if (value >= 1500 && value <= DateTime.Now.Year)
+                if (value >= ANNEE_MIN && value <= DateTime.Now.Year)
                 {
                     _annee = value;
                 }
