@@ -198,12 +198,16 @@ namespace TP2_420_14B_FX.Classes
 
         #region MÉTHODES
 
+        /// <summary>
+        /// Surcharge de la méthode ToString déjà existante
+        /// </summary>
+        /// <returns>Le titre, le style et la durée du la chanson, formatée avec des espaces</returns>
         public override string ToString()
         {
             string tempTitre = Titre.PadRight(40 - Titre.Length);
             string tempStyle = Style.ToString().PadRight(20 - Style.ToString().Length);
 
-            return String.Format(tempTitre + tempTitre + Duree);
+            return String.Format(tempTitre + tempStyle + Duree);
         }
 
         #endregion
