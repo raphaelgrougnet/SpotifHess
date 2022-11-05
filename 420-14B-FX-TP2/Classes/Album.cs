@@ -396,7 +396,15 @@ namespace TP2_420_14B_FX.Classes
 
         public bool SupprimerChanson(Chanson pChanson)
         {
-
+            if (ChansonExiste(pChanson))
+            {
+                _chansons.Remove(pChanson);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 
