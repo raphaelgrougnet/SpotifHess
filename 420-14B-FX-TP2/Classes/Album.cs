@@ -422,11 +422,11 @@ namespace TP2_420_14B_FX.Classes
         }
 
         /// <summary>
-        /// 
+        /// Définie l'operator == pour les albums
         /// </summary>
-        /// <param name="albumGauche"></param>
-        /// <param name="albumDroite"></param>
-        /// <returns></returns>
+        /// <param name="albumGauche">Un album</param>
+        /// <param name="albumDroite">Un autre album</param>
+        /// <returns>Retourne vrai si les albums sont égales sinon retourn faux</returns>
         public static bool operator == (Album albumGauche, Album albumDroite)
         {
             if (Object.ReferenceEquals(albumGauche, albumDroite))
@@ -445,9 +445,28 @@ namespace TP2_420_14B_FX.Classes
             
         }
 
+        /// <summary>
+        /// Définie l'operator != pour les albums
+        /// </summary>
+        /// <param name="albumGauche">Un album</param>
+        /// <param name="albumDroite">Un autre album</param>
+        /// <returns>Retourne vrai si les albums sont différents sinon retourne faux</returns>
         public static bool operator != (Album albumGauche, Album albumDroite)
         {
+            return !(albumGauche == albumDroite);
+        }
 
+        /// <summary>
+        /// Définie le Equals pour les albums
+        /// </summary>
+        /// <param name="obj">Un objet</param>
+        /// <returns>Retourne vrai si les deux albums sont identiques sinon retourne faux</returns>
+        public override bool Equals(object obj)
+        {
+            if (obj == null || obj.GetType() != typeof(Album))
+                return false;
+
+            return this == (Album) obj;
         }
 
 
