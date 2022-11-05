@@ -379,7 +379,7 @@ namespace TP2_420_14B_FX.Classes
         }
 
         /// <summary>
-        /// Ajoute une nouvelle chanson si elle n'est pas null ni si elle existe déjà
+        /// Ajoute une nouvelle chanson dans la liste si elle n'est pas null ni si elle existe déjà
         /// </summary>
         /// <param name="pChanson">Un chanson</param>
         public void AjouterChanson(Chanson pChanson)
@@ -394,6 +394,11 @@ namespace TP2_420_14B_FX.Classes
             }
         }
 
+        /// <summary>
+        /// Supprime une chanson dans la liste
+        /// </summary>
+        /// <param name="pChanson">Un chanson</param>
+        /// <returns>Return vrai si elle a été bien supprimé sinon faux si elle n'a pas été supprimé</returns>
         public bool SupprimerChanson(Chanson pChanson)
         {
             if (ChansonExiste(pChanson))
@@ -406,6 +411,45 @@ namespace TP2_420_14B_FX.Classes
                 return false;
             }
         }
+
+        /// <summary>
+        /// Affiche correctement les albums
+        /// </summary>
+        /// <returns>La représentation d'un albun sous forme de string</returns>
+        public override string ToString()
+        {
+            return $"{Titre}({Annee})";
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="albumGauche"></param>
+        /// <param name="albumDroite"></param>
+        /// <returns></returns>
+        public static bool operator == (Album albumGauche, Album albumDroite)
+        {
+            if (Object.ReferenceEquals(albumGauche, albumDroite))
+                return true;
+            else if (albumGauche is null || albumDroite is null)
+                return false;
+            else if (albumGauche.Titre == albumDroite.Titre && albumGauche.Annee == albumDroite.Annee &&
+                    albumGauche.Artiste == albumDroite.Artiste && albumGauche.Image == albumDroite.Image)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+
+        public static bool operator != (Album albumGauche, Album albumDroite)
+        {
+
+        }
+
 
 
 
