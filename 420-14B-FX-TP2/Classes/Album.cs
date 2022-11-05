@@ -332,7 +332,7 @@ namespace TP2_420_14B_FX.Classes
 
         private byte ObtenirPositionAleatoire()
         {
-            bool dif = false;
+            byte index = _position;
             if(_chansons.Count == 0)
             {
                 return 0;
@@ -343,17 +343,14 @@ namespace TP2_420_14B_FX.Classes
             }
             else
             {
-                while(dif == false)
+                while(index == _position)
                 {
                     _random = new Random();
-                    byte index = Convert.ToByte(_random.Next(0, (_chansons.Count + 1)));
+                    byte index1 = Convert.ToByte(_random.Next(0, (_chansons.Count + 1)));
 
-                    if(index != _position)
-                    {
-                        dif = true;
-                        return index;
-                    }
+                    index = index1;
                 }
+                return index;
             }
         }
 
