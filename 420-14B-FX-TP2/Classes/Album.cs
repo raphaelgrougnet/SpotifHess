@@ -139,7 +139,7 @@ namespace TP2_420_14B_FX.Classes
             get { return _annee; }
             set
             {
-                if (value >= 1500 && value <= DateTime.Now.Year)
+                if (value >= ANNEE_MIN && value <= DateTime.Now.Year)
                 {
                     _annee = value;
                 }
@@ -224,6 +224,28 @@ namespace TP2_420_14B_FX.Classes
 
         #region CONSTRUCTEURS
 
+        /// <summary>
+        /// Constructeur d'album
+        /// </summary>
+        /// <param name="aleatoire">Obtient ou définit si l'obtention d'une chanson se 
+        /// fait de manière aléatoire ou non.</param>
+        /// <param name="id">L'id de l'album</param>
+        /// <param name="titre">Titre de l'album</param>
+        /// <param name="annee">Date de sortie de l'album</param>
+        /// <param name="image">Image de l'album</param>
+        /// <param name="artiste">Artiste de l'album</param>
+        public Album(bool aleatoire, Guid id, string titre, ushort annee, string image, string artiste)
+        {
+            Aleatoire = aleatoire;
+            Id = id;
+            Titre = titre;
+            Annee = annee;
+            Image = image;
+            Artiste = artiste;
+            _position = 0;
+            _random = new Random();
+            _chansons = new List<Chanson>();
+        }
         #endregion
 
         #region MÉTHODES
@@ -263,6 +285,77 @@ namespace TP2_420_14B_FX.Classes
             }
             return ObtenirChanson(ObtenirPositionAleatoire());
         }
+
+        /// <summary>
+        /// Cherche si la chanson existe déjà
+        /// </summary>
+        /// <param name="pChanson">Un chanson</param>
+        /// <returns>Return true si la chanson existe dans l'album ou false si elle n'existe pas</returns>
+        private bool ChansonExiste(Chanson pChanson)
+        {
+            try
+            {
+                if (_chansons.Equals(pChanson))
+                    return true;
+            }
+            catch(ArgumentNullException estNull)
+            {
+                throw estNull;
+            }
+            
+            return false;
+
+        }
+
+        //public Chanson ObtenirChanson(byte index)
+        //{
+        //    try
+        //    {
+        //        _position = index;
+        //        int i = 0;
+
+        //        foreach (Chanson pChanson in _chansons)
+        //        {
+        //            if (i == _position)
+        //            {
+        //                return pChanson;
+        //            }
+        //        }
+        //    }
+        //    catch(IndexOutOfRangeException outOfRange)
+        //    {
+        //        throw outOfRange;
+        //    }
+            
+        //}
+
+        private byte ObtenirPositionAleatoire()
+        {
+            bool dif = false;
+            if(_chansons.Count == 0)
+            {
+                return 0;
+            }
+            else if(_chansons.Count == 1)
+            {
+                return 1;
+            }
+            else
+            {
+                while(dif == false)
+                {
+                    _random = new Random();
+                    byte index = Convert.ToByte(_random.Next(0, (_chansons.Count + 1)));
+
+                    if(index != _position)
+                    {
+                        dif = true;
+                        return index;
+                    }
+                }
+            }
+        }
+
         #endregion
 
 
