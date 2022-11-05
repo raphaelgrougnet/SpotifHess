@@ -330,6 +330,10 @@ namespace TP2_420_14B_FX.Classes
             
         //}
 
+        /// <summary>
+        /// Obtient une position aléatoire
+        /// </summary>
+        /// <returns>Un nombre aléatoire </returns>
         private byte ObtenirPositionAleatoire()
         {
             byte index = _position;
@@ -373,6 +377,28 @@ namespace TP2_420_14B_FX.Classes
             }
             return ObtenirChanson(ObtenirPositionAleatoire());
         }
+
+        /// <summary>
+        /// Ajoute une nouvelle chanson si elle n'est pas null ni si elle existe déjà
+        /// </summary>
+        /// <param name="pChanson">Un chanson</param>
+        public void AjouterChanson(Chanson pChanson)
+        {
+            if (ChansonExiste(pChanson))
+            {
+                throw new Exception("La chanson existe déjà dans l'album");
+            }
+            else
+            {
+                _chansons.Add(pChanson);
+            }
+        }
+
+        public bool SupprimerChanson(Chanson pChanson)
+        {
+
+        }
+
 
 
 
