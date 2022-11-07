@@ -344,8 +344,8 @@ namespace TP2_420_14B_FX
             {
                 Album album = lstAlbums.SelectedItem as Album;
 
-                //Todo: modifier l'état de l'album pour la lecture
-               
+                //Todo: modifier l'état de l'album pour la lecture FAIT
+                album.Aleatoire = aleatoire;
 
                 //Ajustement de l'image selon si la lecteure est aléatoire ou non.
                 string image = aleatoire ? IMAGE_ALEATOIRE_SELECT : IMAGE_ALEATOIRE;
