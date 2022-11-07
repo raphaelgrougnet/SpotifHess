@@ -422,13 +422,17 @@ namespace TP2_420_14B_FX
         /// Permet l'ajout d'une chanson.
         /// </summary>
         /// <remarks>Un album doit être sélectionné dans la liste. Sinon, un message est affiché à l'utilisateur. 
-        /// Si oui, alors on ajoute l'album, on enregistre les données de la chansons, on mest à jour la liste des chansons
+        /// Si oui, alors on ajoute l'album, on enregistre les données de la chansons, on met à jour la liste des chansons
         /// et on affiche un message de confimation.</remarks>
         private void AjouterChanson()
         {
-
-            //Implémenter la méthode AjouterChanson
-            throw new NotImplementedException();
+            if (lstAlbums.SelectedIndex != -1)
+            {
+                FormChanson frmChanson = new FormChanson();
+                frmChanson.ShowDialog();
+            }
+            //Implémenter la méthode AjouterChanson FAIT
+            
         }
 
         /// <summary>

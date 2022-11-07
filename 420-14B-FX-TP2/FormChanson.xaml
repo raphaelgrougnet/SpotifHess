@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TP2_420_14B_FX"
         mc:Ignorable="d"
-        Title="Chanson" Height="350" Width="400">
+        Title="Chanson" Height="350" Width="400" Background="#191414">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
