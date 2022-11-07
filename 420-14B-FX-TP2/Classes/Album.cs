@@ -330,33 +330,7 @@ namespace TP2_420_14B_FX.Classes
             
         //}
 
-        /// <summary>
-        /// Obtient une position aléatoire
-        /// </summary>
-        /// <returns>Un nombre aléatoire </returns>
-        private byte ObtenirPositionAleatoire()
-        {
-            byte index = _position;
-            if(_chansons.Count == 0)
-            {
-                return 0;
-            }
-            else if(_chansons.Count == 1)
-            {
-                return 1;
-            }
-            else
-            {
-                while(index == _position)
-                {
-                    _random = new Random();
-                    byte index1 = Convert.ToByte(_random.Next(0, (_chansons.Count + 1)));
-
-                    index = index1;
-                }
-                return index;
-            }
-        }
+        
 
         #endregion
 
@@ -377,6 +351,25 @@ namespace TP2_420_14B_FX.Classes
             }
             return ObtenirChanson(ObtenirPositionAleatoire());
         }
+
+        /// <summary>
+        /// Obtient une position aléatoire
+        /// </summary>
+        /// <returns>Un nombre aléatoire </returns>
+        private byte ObtenirPositionAleatoire()
+        {
+            
+            if (NbChansons < 1)
+            {
+                return 0;
+            }
+            else if(NbChansons == 1)
+            {
+                return 1;
+            }
+            return (byte)_random.Next(0, NbChansons);
+        }
+        
 
         /// <summary>
         /// Ajoute une nouvelle chanson dans la liste si elle n'est pas null ni si elle existe déjà
