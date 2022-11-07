@@ -294,17 +294,27 @@ namespace TP2_420_14B_FX.Classes
         /// <returns>Return true si la chanson existe dans l'album ou false si elle n'existe pas</returns>
         private bool ChansonExiste(Chanson pChanson)
         {
-            try
+            if (pChanson != null)
             {
                 if (_chansons.Equals(pChanson))
+                {
                     return true;
+                }
+                return false;
             }
-            catch(ArgumentNullException estNull)
-            {
-                throw estNull;
-            }
+            throw new ArgumentException("La chanson ne peut pas être nulle", "Chanson");
             
-            return false;
+            //try
+            //{
+            //    if (_chansons.Equals(pChanson))
+            //        return true;
+            //}
+            //catch(ArgumentNullException estNull)
+            //{
+            //    throw estNull;
+            //}
+            
+            //return false;
 
         }
 
@@ -381,10 +391,8 @@ namespace TP2_420_14B_FX.Classes
             {
                 throw new Exception("La chanson existe déjà dans l'album");
             }
-            else
-            {
-                _chansons.Add(pChanson);
-            }
+            _chansons.Add(pChanson);
+            
         }
 
         /// <summary>
@@ -461,25 +469,6 @@ namespace TP2_420_14B_FX.Classes
 
             return this == (Album) obj;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
