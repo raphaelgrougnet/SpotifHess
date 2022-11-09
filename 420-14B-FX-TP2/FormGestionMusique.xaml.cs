@@ -39,14 +39,18 @@ namespace TP2_420_14B_FX
         DispatcherTimer timer = new DispatcherTimer();
 
 
-   
+        /// <summary>
+        /// Gestionnaire de musique
+        /// </summary>
+        private GestionMusique _gestionMusique;
+
 
         #endregion
 
         #region PROPRIÉTÉS ET INDEXEURS
-        
 
-  
+
+
         #endregion
 
         #region CONSTRUCTEURS
@@ -81,9 +85,12 @@ namespace TP2_420_14B_FX
         /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            GestionMusique _gestionMusique = new GestionMusique();
+            //GestionMusique _gestionMusique = new GestionMusique();
             //todo: Afficher la liste des albums.
-     
+
+            _gestionMusique = new GestionMusique();
+
+            AfficherListeAlbums();
         }
 
         #region ÉVÉNEMENTS_MEDIA_PLAYER
@@ -329,8 +336,14 @@ namespace TP2_420_14B_FX
         /// </summary>
         private void AfficherListeAlbums()
         {
-            //Implémenter la méthode AfficherListeAlbums
-            throw new NotImplementedException();
+            //Implémenter la méthode AfficherListeAlbums FAIT
+
+            lstAlbums.Items.Clear();
+
+            foreach(Album album in _gestionMusique.Albums)
+            {
+                lstAlbums.Items.Add(album);
+            }
 
         }
 
