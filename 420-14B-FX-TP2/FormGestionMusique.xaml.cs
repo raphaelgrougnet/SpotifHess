@@ -83,6 +83,7 @@ namespace TP2_420_14B_FX
         {
             GestionMusique _gestionMusique = new GestionMusique();
             //todo: Afficher la liste des albums.
+            
      
         }
 
