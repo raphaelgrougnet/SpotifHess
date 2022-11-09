@@ -91,6 +91,54 @@ namespace TP2_420_14B_FX.Classes
 
         }
 
+        private void ChargerAlbum()
+        {
+            string[] vectDonnesAlbums = Utilitaire.ChargerDonnees(CHEMIN_FICHIER_ALBUMS);
+
+            string[] vectNouvDonnesAlbums = new string[vectDonnesAlbums.Length - 1];
+
+            vectDonnesAlbums[0] = "";
+
+            int j = 0;
+
+            foreach(string ligne in vectDonnesAlbums)
+            {
+                if(ligne != "")
+                {
+                    vectNouvDonnesAlbums[j] = ligne;
+
+                    j++;
+                }
+            }
+
+            vectDonnesAlbums = vectNouvDonnesAlbums;
+
+            
+        }
+
+        /// <summary>
+        /// Ajoute un nouveau album dans la liste
+        /// </summary>
+        /// <param name="album">Un album</param>
+        public void AjouterAlbum(Album album)
+        {
+            foreach(Album pAlbum in _albums)
+            {
+                if (pAlbum != album && !(album is null))
+                    _albums.Add(album);
+                else if (album is null)
+                    throw new ArgumentNullException("Album", "Un album ne peut pas être null");
+                else
+                    throw new Exception("L'album existe déjà");
+
+            }
+        }
+
+        /// <summary>
+        /// Obtient un album grâce à son Id
+        /// </summary>
+        /// <param name="id">Code unique d'un album</param>
+        /// <returns>Retourne un album selon son id s'il n'existe pas, retourne null</returns>
         private Album ObtenirAlbum(Guid id)
         {
             foreach(Album album in _albums)
