@@ -39,6 +39,7 @@ namespace TP2_420_14B_FX.Classes
         {
             //Completer avec les classes ChargerAlbums et ChagerChansons
             ChargerChansons();
+            ChargerAlbum();
         }
         #endregion
 
@@ -112,6 +113,29 @@ namespace TP2_420_14B_FX.Classes
             }
 
             vectDonnesAlbums = vectNouvDonnesAlbums;
+
+            for(int i = 0; i < vectDonnesAlbums.Length; i++)
+            {
+                string[] vectChamp = vectDonnesAlbums[i].Split(";");
+
+                bool aleatoire = false;
+
+                Guid id = Guid.Parse(vectChamp[0].Trim());
+
+                string titre = vectChamp[1].Trim();
+
+                string artiste = vectChamp[2].Trim();
+
+                ushort annee = ushort.Parse(vectChamp[3].Trim());
+
+                string image = vectChamp[4].Trim();
+
+
+
+                Album nouvAlbum = new Album(aleatoire, id, titre, annee, image, artiste);
+
+                _albums.Add(nouvAlbum);
+            }
 
             
         }
