@@ -92,6 +92,9 @@ namespace TP2_420_14B_FX.Classes
 
         }
 
+        /// <summary>
+        /// Charge les albums dans la liste des albums
+        /// </summary>
         private void ChargerAlbum()
         {
             string[] vectDonnesAlbums = Utilitaire.ChargerDonnees(CHEMIN_FICHIER_ALBUMS);
@@ -174,6 +177,23 @@ namespace TP2_420_14B_FX.Classes
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Obtient un album selon la position spécifiée
+        /// </summary>
+        /// <param name="index">Position spécificée</param>
+        /// <returns>Retoune un album</returns>
+        public Album ObtenirAlbum(int index)
+        {
+
+            for(int i = 0; i < _albums.Count; i++)
+            {
+                if (i == index)
+                    return _albums[i];
+            }
+
+            throw new IndexOutOfRangeException($"Il n'y a aucun album associé avec cette index, l'index est plus que {NbAlbums}");
         }
 
         #endregion
