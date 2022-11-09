@@ -344,7 +344,6 @@ namespace TP2_420_14B_FX
             {
                 lstAlbums.Items.Add(album);
             }
-
         }
 
         /// <summary>

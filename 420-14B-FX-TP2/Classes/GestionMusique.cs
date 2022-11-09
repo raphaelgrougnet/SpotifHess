@@ -53,7 +53,7 @@ namespace TP2_420_14B_FX.Classes
             //Je supprime la première ligne inutile
             string[] vectDonnesChansons = Utilitaire.ChargerDonnees(CHEMIN_FICHIER_CHANSONS);
 
-            string[] newVectDonneesChansons = new string[vectDonnesChansons.Length - 1];
+            string[] newVectDonneesChansons = new string[vectDonnesChansons.Length - 1]; 
 
             vectDonnesChansons[0] = "";
 
@@ -149,16 +149,12 @@ namespace TP2_420_14B_FX.Classes
         /// <param name="album">Un album</param>
         public void AjouterAlbum(Album album)
         {
-            foreach(Album pAlbum in _albums)
-            {
-                if (pAlbum != album && !(album is null))
-                    _albums.Add(album);
-                else if (album is null)
-                    throw new ArgumentNullException("Album", "Un album ne peut pas être null");
-                else
-                    throw new Exception("L'album existe déjà");
-
-            }
+            if (!AlbumExiste(album))
+                _albums.Add(album);
+            else if (album is null)
+                throw new ArgumentNullException("Album", "Un album ne peut pas être null");
+            else
+                throw new Exception("L'album existe déjà");
         }
 
         /// <summary>
@@ -194,6 +190,25 @@ namespace TP2_420_14B_FX.Classes
             }
 
             throw new IndexOutOfRangeException($"Il n'y a aucun album associé avec cette index, l'index est plus que {NbAlbums}");
+        }
+
+        /// <summary>
+        /// Vérifie si l'album existe déjà dans la liste d'albums
+        /// </summary>
+        /// <param name="pAlbum">Un album</param>
+        /// <returns>Retourne vrai s'il existe sinon retourne faux</returns>
+        public bool AlbumExiste(Album pAlbum)
+        {
+            foreach (Album album in _albums)
+            {
+                if (album == pAlbum)
+                    return true;
+            }
+
+            if (pAlbum is null)
+                throw new ArgumentNullException("Album", "Un album ne peut pas être null");
+
+            return false;
         }
 
         #endregion

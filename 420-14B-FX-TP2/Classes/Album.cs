@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace TP2_420_14B_FX.Classes
 {
@@ -470,6 +471,20 @@ namespace TP2_420_14B_FX.Classes
             return this == (Album) obj;
         }
 
+        public int CompareTo(object obj)
+        {
+            if (obj is null)
+                return 1;
+            if (!(obj is Album))
+                throw new ArgumentException("L'objet doit être un Album");
+
+            Album autreAlbum = obj as Album;
+
+            int resultat = Annee.CompareTo(autreAlbum.Annee);
+
+            if(resultat == 0)
+                return string.Compare(Titre, autreAlbum.Titre, CultureInfo.CurrentCulture, )
+        }
 
 
     }
