@@ -212,8 +212,8 @@ namespace TP2_420_14B_FX.Classes
         /// <returns>Le titre, le style et la durée du la chanson, formatée avec des espaces</returns>
         public override string ToString()
         {
-            string tempTitre = Titre.PadRight(40 - Titre.Length);
-            string tempStyle = Style.ToString().PadRight(20 - Style.ToString().Length);
+            string tempTitre = Titre.PadRight(40);
+            string tempStyle = Style.ToString().PadRight(20);
 
             return String.Format(tempTitre + tempStyle + Duree);
         }
