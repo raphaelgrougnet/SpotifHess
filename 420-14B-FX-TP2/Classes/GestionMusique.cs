@@ -91,6 +91,19 @@ namespace TP2_420_14B_FX.Classes
 
         }
 
+        private Album ObtenirAlbum(Guid id)
+        {
+            foreach(Album album in _albums)
+            {
+                if(album.Id == id)
+                {
+                    return album;
+                }
+            }
+
+            return null;
+        }
+
         #endregion
 
     }
