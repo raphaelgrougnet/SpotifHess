@@ -214,6 +214,14 @@ namespace TP2_420_14B_FX.Classes
             return false;
         }
 
+        /// <summary>
+        /// Trie la liste d'album en ordre croissant de Titre et d'année
+        /// </summary>
+        public void TrierAlbums()
+        {
+            _albums.Sort();
+        }
+
         #endregion
 
     }

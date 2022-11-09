@@ -7,7 +7,7 @@ namespace TP2_420_14B_FX.Classes
     /// <summary>
     /// Représente un album de musique
     /// </summary>
-    public class Album 
+    public class Album : IComparable
     {
 
         #region CONSTANTES
@@ -471,6 +471,11 @@ namespace TP2_420_14B_FX.Classes
             return this == (Album) obj;
         }
 
+        /// <summary>
+        /// Définie la méthode de CompareTo pour les albums
+        /// </summary>
+        /// <param name="obj">Un objet</param>
+        /// <returns>La façon de trier les albums</returns>
         public int CompareTo(object obj)
         {
             if (obj is null)
