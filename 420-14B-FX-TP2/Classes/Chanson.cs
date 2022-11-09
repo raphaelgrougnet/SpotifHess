@@ -218,6 +218,60 @@ namespace TP2_420_14B_FX.Classes
             return String.Format(tempTitre + tempStyle + Duree);
         }
 
+
+        /// <summary>
+        /// Définie l'operator == pour les chansons
+        /// </summary>
+        /// <param name="chansonGauche">Une chanson</param>
+        /// <param name="chansonDroite">Une autre chanson</param>
+        /// <returns>Retourne vrai si les chansons sont égales sinon retourn faux</returns>
+        public static bool operator == (Chanson chansonGauche, Chanson chansonDroite)
+        {
+            if (Object.ReferenceEquals(chansonGauche, chansonDroite))
+                return true;
+            else if (chansonGauche is null || chansonDroite is null)
+                return false;
+            else if (chansonGauche.Titre == chansonDroite.Titre && chansonGauche.Style == chansonDroite.Style &&
+                    chansonGauche.Duree == chansonDroite.Duree)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        /// <summary>
+        /// Définie l'operator != pour les chansons
+        /// </summary>
+        /// <param name="chansonGauche">Une chanson</param>
+        /// <param name="chansonDroite">Une autre chanson</param>
+        /// <returns>Retourne vrai si les chanson sont différents sinon retourne faux</returns>
+        public static bool operator !=(Chanson chansonGauche, Chanson chansonDroite)
+        {
+            return !(chansonGauche == chansonDroite);
+        }
+
+
+
+        /// <summary>
+        /// Définie le Equals pour les chansons
+        /// </summary>
+        /// <param name="obj">Un objet</param>
+        /// <returns>Retourne vrai si les deux chansons sont identiques sinon retourne faux</returns>
+        public override bool Equals(object obj)
+        {
+            if (obj == null || obj.GetType() != typeof(Chanson))
+                return false;
+
+            return this == (Chanson)obj;
+        }
+
+    
+
+
         #endregion
 
 
