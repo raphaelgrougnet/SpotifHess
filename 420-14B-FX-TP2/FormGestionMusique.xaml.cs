@@ -374,7 +374,9 @@ namespace TP2_420_14B_FX
         private void AfficherDetailsAlbum()
         {
             //Implémenter la méthode AfficherDetailsAlbum
-            throw new NotImplementedException();
+            AfficherListeChansons();
+            //throw new NotImplementedException();
+
         }
 
         /// <summary>
@@ -489,7 +491,7 @@ namespace TP2_420_14B_FX
 
              
                 //todo: obtenir le nom du fichier pour l'ouverture.
-                string fichier = chanson.Fichier;
+                string fichier = GestionMusique.CHEMIN_DOSSIER_MP3+chanson.Fichier;
 
                 //Overture du fichier
                 _mediaPlayer.Open(new Uri(fichier));
@@ -514,7 +516,7 @@ namespace TP2_420_14B_FX
         {
             if (lstAlbums.SelectedItem != null)
             {
-                Chanson selectChanson = ((Album) lstAlbums.SelectedItem).ObtenirChanson((byte)lstAlbums.SelectedIndex);
+                Chanson selectChanson = ((Album) lstAlbums.SelectedItem).ObtenirChanson((byte)lstChansons.SelectedIndex);
                 JouerChanson(selectChanson);
             }
         }
