@@ -443,7 +443,13 @@ namespace TP2_420_14B_FX
             if (lstAlbums.SelectedIndex != -1)
             {
                 FormChanson frmChanson = new FormChanson();
+                frmChanson.lblTitreForm.Content = "Ajouter une chanson";
+                frmChanson.btnAjouterModifier.Content = "Ajouter";
                 frmChanson.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Vous devez sélectionner un Album dans la liste ou en créer un.", "Ajouter une chansons", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             //Implémenter la méthode AjouterChanson FAIT
             
