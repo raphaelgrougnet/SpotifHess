@@ -528,8 +528,11 @@ namespace TP2_420_14B_FX
         /// <remarks>L'album et la chanson sélectionné ne peuvent doivent pas êtres nuls</remarks>
         private void JouerChansonPrecedente()
         {
-            //Implémenter la méthode JouerChansonPrecedente
-            throw new NotImplementedException();
+            if (lstAlbums.SelectedItem != null)
+            {
+                Chanson previousSong = ((Album)lstAlbums.SelectedItem).ObtenirChansonPrecedente();
+                JouerChanson(previousSong);
+            }
         }
 
         /// <summary>
