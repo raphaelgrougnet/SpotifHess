@@ -482,8 +482,10 @@ namespace TP2_420_14B_FX.Classes
 
             int resultat = Annee.CompareTo(autreAlbum.Annee);
 
-            if(resultat == 0)
-                return string.Compare(Titre, autreAlbum.Titre, CultureInfo.CurrentCulture, )
+            if (resultat == 0)
+                return string.Compare(Titre, autreAlbum.Titre, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase | CompareOptions.IgnoreSymbols);
+
+            return resultat;
         }
 
 
