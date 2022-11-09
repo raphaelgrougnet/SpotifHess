@@ -38,8 +38,10 @@ namespace TP2_420_14B_FX.Classes
         public GestionMusique()
         {
             //Completer avec les classes ChargerAlbums et ChagerChansons
-            ChargerChansons();
+            _albums = new List<Album>();
             ChargerAlbum();
+            ChargerChansons();
+            
         }
         #endregion
 
@@ -63,6 +65,7 @@ namespace TP2_420_14B_FX.Classes
                 if (ligne != "")
                 {
                     newVectDonneesChansons[i] = ligne;
+                    i++;
                 }
             }
 
@@ -74,7 +77,7 @@ namespace TP2_420_14B_FX.Classes
             foreach (string ligne in vectDonnesChansons)
             {
                 ///Fragmentation de la ligne en string
-                ligneSplited = ligne.Split();
+                ligneSplited = ligne.Split(';');
                 Guid guid = new Guid(ligneSplited[0]);
                 string titre = ligneSplited[1];
                 StyleMusical style;
