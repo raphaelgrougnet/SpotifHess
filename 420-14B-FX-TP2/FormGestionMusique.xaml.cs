@@ -498,7 +498,7 @@ namespace TP2_420_14B_FX
 
              
                 //todo: obtenir le nom du fichier pour l'ouverture.
-                string fichier = GestionMusique.CHEMIN_DOSSIER_MP3+chanson.Fichier;
+                string fichier = GestionMusique.CHEMIN_DOSSIER_MP3+"\\"+chanson.Fichier;
 
                 //Overture du fichier
                 _mediaPlayer.Open(new Uri(fichier));
