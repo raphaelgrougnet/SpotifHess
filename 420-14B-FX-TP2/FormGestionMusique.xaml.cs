@@ -382,8 +382,18 @@ namespace TP2_420_14B_FX
         private void AfficherDetailsAlbum()
         {
             //Implémenter la méthode AfficherDetailsAlbum
-            InitialiserDetailsAlbums();
-            AfficherListeChansons();
+            if (lstAlbums.SelectedIndex != -1)
+            {
+                Album selectAlbum = (Album)lstAlbums.SelectedItem;
+                InitialiserDetailsAlbums();
+                lblTitreAlbum.Content = selectAlbum.Titre;
+                lblAnnee.Content = selectAlbum.Annee;
+                lblArtistes.Content = selectAlbum.Artiste;
+                lblDureeAlbum.Content = selectAlbum.Duree;
+                imgAlbum.Source = new BitmapImage(new Uri(GestionMusique.CHEMIN_IMAGES_ALBUMS+"\\"+selectAlbum.Image));
+                AfficherListeChansons();
+            }
+            
             //throw new NotImplementedException();
 
         }
