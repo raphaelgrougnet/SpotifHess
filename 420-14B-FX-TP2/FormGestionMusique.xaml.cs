@@ -393,6 +393,8 @@ namespace TP2_420_14B_FX
             if(lstAlbums.SelectedItem == null)
             {
                 FormAlbum frmAlbum = new FormAlbum();
+
+                frmAlbum.ShowDialog();
             }
         }
 
