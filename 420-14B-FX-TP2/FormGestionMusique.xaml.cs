@@ -330,10 +330,10 @@ namespace TP2_420_14B_FX
         {
             //Implémenter la méthode InitialiserDetailsAlbums
             InitialiserLecteurMusique();
-            lblTitreAlbum.Content = "Titre";
-            lblAnnee.Content = "Annee";
-            lblArtistes.Content = "Artistes";
-            lblDureeAlbum.Content = "Duree";
+            lblTitreAlbum.Content = "";
+            lblAnnee.Content = "";
+            lblArtistes.Content = "";
+            lblDureeAlbum.Content = "";
             imgAlbum.Source = null;
 
         }
@@ -406,7 +406,7 @@ namespace TP2_420_14B_FX
             //Implémenter la méthode AjouterAlbum
             if(lstAlbums.SelectedItem == null)
             {
-
+                FormAlbum frmAlbum = new FormAlbum();
             }
         }
 
