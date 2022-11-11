@@ -327,7 +327,11 @@ namespace TP2_420_14B_FX
         {
             //Implémenter la méthode InitialiserDetailsAlbums
             InitialiserLecteurMusique();
-
+            lblTitreAlbum.Content = "";
+            lblAnnee.Content = "";
+            lblArtistes.Content = "";
+            lblDureeAlbum.Content = "";
+            imgAlbum.Source = null;
 
         }
 
