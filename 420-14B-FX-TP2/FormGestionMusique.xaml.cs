@@ -326,7 +326,8 @@ namespace TP2_420_14B_FX
         private void InitialiserDetailsAlbums()
         {
             //Implémenter la méthode InitialiserDetailsAlbums
-            throw new NotImplementedException();
+            InitialiserLecteurMusique();
+
 
         }
 
