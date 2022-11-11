@@ -382,6 +382,7 @@ namespace TP2_420_14B_FX
         private void AfficherDetailsAlbum()
         {
             //Implémenter la méthode AfficherDetailsAlbum
+            InitialiserDetailsAlbums();
             AfficherListeChansons();
             //throw new NotImplementedException();
 
