@@ -257,6 +257,7 @@ namespace TP2_420_14B_FX.Classes
         /// <returns>La chanson sélectionnée grâce à son index</returns>
         public Chanson ObtenirChanson(byte index)
         {
+
             if (index > NbChansons)
             {
                 throw new IndexOutOfRangeException("L'index dépasse le nombre de chansons");
@@ -378,7 +379,12 @@ namespace TP2_420_14B_FX.Classes
             {
                 return 1;
             }
-            return (byte)_random.Next(0, NbChansons);
+            byte aleatoire = (byte)_random.Next(0, NbChansons);
+            while (aleatoire == Position)
+            {
+                aleatoire = (byte)_random.Next(0, NbChansons);
+            }
+            return aleatoire;
         }
         
 
