@@ -265,8 +265,11 @@ namespace TP2_420_14B_FX
         /// <param name="e"></param>
         private void lstChansons_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-            JouerChansonSelectionnee();
+            if (lstChansons.SelectedIndex != -1)
+            {
+                JouerChansonSelectionnee();
+            }
+            
 
         }
 
@@ -419,6 +422,7 @@ namespace TP2_420_14B_FX
         /// <remarks>L'album sélectionné ne peut pas être nul. Le lecteur de musique doit être réinitialisé.</remarks>
         private void AfficherListeChansons()
         {
+            lstChansons.Items.Clear();
             if (lstAlbums.SelectedIndex != 1)
             {
                 Album albumSelected = (Album)lstAlbums.SelectedItem;
