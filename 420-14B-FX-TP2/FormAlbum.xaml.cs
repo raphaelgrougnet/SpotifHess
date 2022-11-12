@@ -38,7 +38,7 @@ namespace TP2_420_14B_FX
         /// </summary>
         /// <param name="album"></param>
         /// <param name="etat"></param>
-        public FormAlbum(Album album = null, EtatAlbum etat = EtatAlbum.Ajout)
+        public FormAlbum(Album album = null, EtatAlbum etat = EtatAlbum.Ajouter)
         {
             InitializeComponent();
 
@@ -62,11 +62,11 @@ namespace TP2_420_14B_FX
         private void InitialiserFormulaire()
         {
             lblTitre.Content = _etat.ToString() + " un album";
-            btnAjouterModifier.Content = _etat.ToString() + " un album";
+            btnAjouterModifier.Content = _etat.ToString();
 
             switch (_etat)
             {
-                case EtatAlbum.Ajout:
+                case EtatAlbum.Ajouter:
                     txtTitre.Clear();
                     txtAnnee.Clear();
                     txtArtiste.Clear();
@@ -111,6 +111,57 @@ namespace TP2_420_14B_FX
             }
 
             return true;
+        }
+
+        private void btnAjouterModifier_Click(object sender, RoutedEventArgs e)
+        {
+            switch (_etat)
+            {
+                case EtatAlbum.Ajouter:
+
+                    if (ValidationAlbum())
+                    {
+                        string titre = txtTitre.Text;
+                        ushort annee = ushort.Parse(txtAnnee.Text);
+                        string artistes = txtArtiste.Text;
+                        string image = imgAlbum.Source.ToString();
+
+                        pAlbum = new Album(false, Guid.NewGuid(), titre, annee, image, artistes);
+                    }
+                    break;
+                case EtatAlbum.Modidifier:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Bouton qui permet l'utilisateur de parcourir ses dossiers pour une images pour son album
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnParcourir_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Title = "Choisissez une image";
+            openFileDialog.Filter = "Fichier JPG (*.jpg)|*.jpg|Fichier PNG (*.png)|*.png";
+
+            if ((bool)openFileDialog.ShowDialog())
+            {
+                string ficher = openFileDialog.FileName;
+
+                BitmapImage biAl = new BitmapImage();
+
+                biAl.BeginInit();
+                biAl.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                biAl.UriSource = new Uri(ficher);
+                biAl.CacheOption = BitmapCacheOption.OnLoad;
+                biAl.EndInit();
+
+                imgAlbum.Source = biAl;
+            }
         }
     }
 }
