@@ -432,7 +432,23 @@ namespace TP2_420_14B_FX
         private void ModifierAlbum()
         {
             //Implémenter la méthode ModifierAlbum
-            throw new NotImplementedException();
+            if (lstAlbums.SelectedItem is null)
+                MessageBox.Show("Vous devez sélectionner un album");
+            else
+            {
+                Album albumSelected = lstAlbums.SelectedItem as Album;
+
+                FormAlbum frmAlbum = new FormAlbum(albumSelected, Enums.EtatAlbum.Modifier);
+
+                if ((bool)frmAlbum.ShowDialog())
+                {
+                    AfficherListeAlbums();
+
+                    MessageBox.Show($"L'album {albumSelected} a bien été modifié.",
+                        "Modification d'un album", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+            }
         }
 
         /// <summary>

@@ -87,7 +87,7 @@ namespace TP2_420_14B_FX
                     txtArtiste.Clear();
                     imgAlbum.Source = null;
                     break;
-                case EtatAlbum.Modidifier:
+                case EtatAlbum.Modifier:
                     if(pAlbum != null)
                     {
                         txtTitre.Text = pAlbum.Titre;
@@ -116,7 +116,7 @@ namespace TP2_420_14B_FX
                     $"l'année {Album.ANNEE_MIN} et plus petit ou égal que {DateTime.Now.Year}. \n";
 
             if (string.IsNullOrWhiteSpace(txtArtiste.Text))
-                messageErreur += "Le(s) artiste(s) ne doit pas être vide";
+                messageErreur += "Le(s) artiste(s) ne doit pas être vide \n";
 
             if (imgAlbum.Source is null)
                 messageErreur += "Vous devez saisir une image pour votre album";
@@ -156,14 +156,14 @@ namespace TP2_420_14B_FX
                         DialogResult = true;
                     }
                     break;
-                case EtatAlbum.Modidifier:
+                case EtatAlbum.Modifier:
 
                     if (ValidationAlbum())
                     {
                         pAlbum.Titre = txtTitre.Text;
                         pAlbum.Annee = ushort.Parse(txtAnnee.Text);
                         pAlbum.Artiste = txtArtiste.Text;
-                        pAlbum.Image = imgAlbum.Source.ToString();
+                        pAlbum.Image = imgAlbum.Source.ToString(); //Demander prof
 
                         DialogResult = true;
                     }
