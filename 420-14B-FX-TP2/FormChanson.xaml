@@ -30,7 +30,7 @@
             <Label Name="lblTitre" Content="Titre" FontSize="13"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Width="240" VerticalAlignment="Center" HorizontalAlignment="Left">
-            <TextBox x:Name="txtTitre"/>
+            <TextBox x:Name="txtTitre" TextChanged="txtTitre_TextChanged"/>
         </StackPanel>
 
 

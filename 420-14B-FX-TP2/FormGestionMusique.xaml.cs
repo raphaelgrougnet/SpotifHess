@@ -404,12 +404,8 @@ namespace TP2_420_14B_FX
         private void AjouterAlbum()
         {
             //Implémenter la méthode AjouterAlbum
-            if(lstAlbums.SelectedItem == null)
-            {
-                FormAlbum frmAlbum = new FormAlbum();
-
-                frmAlbum.ShowDialog();
-            }
+            FormAlbum frmAlbum = new FormAlbum();
+            frmAlbum.ShowDialog();
         }
 
         /// <summary>

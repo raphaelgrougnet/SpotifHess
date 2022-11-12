@@ -66,7 +66,7 @@ namespace TP2_420_14B_FX
             {
                 if (!Enum.IsDefined(typeof(StyleMusical), value))
                 {
-                    throw 
+                    
                 }
                 _styleMusical = value; 
             }
@@ -124,8 +124,12 @@ namespace TP2_420_14B_FX
 
         }
 
+
         #endregion
 
+        private void txtTitre_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
 
+        }
     }
 }
