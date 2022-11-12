@@ -405,7 +405,22 @@ namespace TP2_420_14B_FX
         {
             //Implémenter la méthode AjouterAlbum
             FormAlbum frmAlbum = new FormAlbum();
-            frmAlbum.ShowDialog();
+
+            if(frmAlbum.ShowDialog() == true)
+            {
+                Album nouvAlbum = frmAlbum.pAlbum;
+
+                nouvAlbum.Image = Guid.NewGuid().ToString();
+
+                _gestionMusique.Albums.Add(nouvAlbum);
+
+                AfficherListeAlbums();
+
+
+
+                MessageBox.Show("Ajout de l'abum fait avec succès !" + nouvAlbum.ToString(), 
+                    "Ajout d'un album", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         /// <summary>

@@ -131,6 +131,11 @@ namespace TP2_420_14B_FX
             return true;
         }
 
+        /// <summary>
+        /// Ajoute ou modifie un album
+        /// </summary>
+        /// <param name="sender">Objet</param>
+        /// <param name="e">Event</param>
         private void btnAjouterModifier_Click(object sender, RoutedEventArgs e)
         {
             switch (_etat)
@@ -144,10 +149,24 @@ namespace TP2_420_14B_FX
                         string artistes = txtArtiste.Text;
                         string image = imgAlbum.Source.ToString();
 
+                        //Utilitaire.EnregistrerDonnees(image); Voir prof
+
                         pAlbum = new Album(false, Guid.NewGuid(), titre, annee, image, artistes);
+
+                        DialogResult = true;
                     }
                     break;
                 case EtatAlbum.Modidifier:
+
+                    if (ValidationAlbum())
+                    {
+                        pAlbum.Titre = txtTitre.Text;
+                        pAlbum.Annee = ushort.Parse(txtAnnee.Text);
+                        pAlbum.Artiste = txtArtiste.Text;
+                        pAlbum.Image = imgAlbum.Source.ToString();
+
+                        DialogResult = true;
+                    }
                     break;
                 default:
                     break;
@@ -197,7 +216,7 @@ namespace TP2_420_14B_FX
                 DialogResult = false;
             }
 
-            
+           
         }
     }
 }
