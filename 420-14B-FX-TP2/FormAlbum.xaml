@@ -39,7 +39,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10">
             <Button x:Name="btnAjouterModifier" Content="Modifier" Width="60" Margin="10,0,10,0" Click="btnAjouterModifier_Click"/>
-            <Button x:Name="btnAnnuler" Content="Annuler" Width="60" Margin="10,0,10,0"/>
+            <Button x:Name="btnAnnuler" Content="Annuler" Width="60" Margin="10,0,10,0" Click="btnAnnuler_Click"/>
         </StackPanel>
     </Grid>
 </Window>

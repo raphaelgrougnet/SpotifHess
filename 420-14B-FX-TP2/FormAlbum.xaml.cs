@@ -13,7 +13,12 @@ namespace TP2_420_14B_FX
     /// </summary>
     public partial class FormAlbum : Window
     {
+        #region CONSTANTES
 
+
+        #endregion
+
+        #region ATTRIBUTS
         /// <summary>
         /// Un album à ajouter ou à modifier
         /// </summary>
@@ -24,6 +29,10 @@ namespace TP2_420_14B_FX
         /// </summary>
         private EtatAlbum _etat;
 
+        #endregion
+
+        #region PROPRIÉTÉS ET INDEXEURS
+
         /// <summary>
         /// Un album à ajouter ou à modifier
         /// </summary>
@@ -32,12 +41,15 @@ namespace TP2_420_14B_FX
             get { return _album; }
             set { _album = value; }
         }
-        
+
+        #endregion
+
+        #region CONSTRUCTEURS
         /// <summary>
         /// Construction du formulaire d'album et il est en mode ajout par défaut
         /// </summary>
-        /// <param name="album"></param>
-        /// <param name="etat"></param>
+        /// <param name="album">Un album</param>
+        /// <param name="etat">État du fomulaire</param>
         public FormAlbum(Album album = null, EtatAlbum etat = EtatAlbum.Ajouter)
         {
             InitializeComponent();
@@ -46,11 +58,14 @@ namespace TP2_420_14B_FX
             _etat = etat;
         }
 
+        #endregion
+
+        #region MÉTHODES
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objet</param>
+        /// <param name="e">Event</param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             InitialiserFormulaire();
@@ -103,6 +118,9 @@ namespace TP2_420_14B_FX
             if (string.IsNullOrWhiteSpace(txtArtiste.Text))
                 messageErreur += "Le(s) artiste(s) ne doit pas être vide";
 
+            if (imgAlbum.Source is null)
+                messageErreur += "Vous devez saisir une image pour votre album";
+
 
             if(messageErreur != "")
             {
@@ -139,8 +157,8 @@ namespace TP2_420_14B_FX
         /// <summary>
         /// Bouton qui permet l'utilisateur de parcourir ses dossiers pour une images pour son album
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Un objet</param>
+        /// <param name="e">Event</param>
         private void btnParcourir_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -162,6 +180,24 @@ namespace TP2_420_14B_FX
 
                 imgAlbum.Source = biAl;
             }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Annule la modidification ou l'ajout d'un album
+        /// </summary>
+        /// <param name="sender">Un obejet</param>
+        /// <param name="e">Event</param>
+        private void btnAnnuler_Click(object sender, RoutedEventArgs e)
+        {
+            if(MessageBox.Show("Voulez-vous vraiment annuler?", "Annuler", MessageBoxButton.YesNo, 
+                MessageBoxImage.Question, MessageBoxResult.Yes) == MessageBoxResult.Yes)
+            {
+                DialogResult = false;
+            }
+
+            
         }
     }
 }
