@@ -38,7 +38,7 @@ namespace TP2_420_14B_FX.Classes
         public GestionMusique()
         {
             //Completer avec les classes ChargerAlbums et ChagerChansons
-            _albums = new List<Album>();
+            Albums = new List<Album>();
             ChargerAlbum();
             ChargerChansons();
             
@@ -153,7 +153,7 @@ namespace TP2_420_14B_FX.Classes
         public void AjouterAlbum(Album album)
         {
             if (!AlbumExiste(album))
-                _albums.Add(album);
+                Albums.Add(album);
             else if (album is null)
                 throw new ArgumentNullException("Album", "Un album ne peut pas être null");
             else
@@ -167,7 +167,7 @@ namespace TP2_420_14B_FX.Classes
         /// <returns>Retourne un album selon son id s'il n'existe pas, retourne null</returns>
         private Album ObtenirAlbum(Guid id)
         {
-            foreach(Album album in _albums)
+            foreach(Album album in Albums)
             {
                 if(album.Id == id)
                 {
@@ -186,10 +186,10 @@ namespace TP2_420_14B_FX.Classes
         public Album ObtenirAlbum(int index)
         {
 
-            for(int i = 0; i < _albums.Count; i++)
+            for(int i = 0; i < NbAlbums; i++)
             {
                 if (i == index)
-                    return _albums[i];
+                    return Albums[i];
             }
 
             throw new IndexOutOfRangeException($"Il n'y a aucun album associé avec cette index, l'index est plus que {NbAlbums}");
@@ -202,7 +202,7 @@ namespace TP2_420_14B_FX.Classes
         /// <returns>Retourne vrai s'il existe sinon retourne faux</returns>
         public bool AlbumExiste(Album pAlbum)
         {
-            foreach (Album album in _albums)
+            foreach (Album album in Albums)
             {
                 if (album == pAlbum)
                     return true;
@@ -210,6 +210,27 @@ namespace TP2_420_14B_FX.Classes
 
             if (pAlbum is null)
                 throw new ArgumentNullException("Album", "Un album ne peut pas être null");
+
+            return false;
+        }
+
+        /// <summary>
+        /// Supprime un album souhaité dans la liste
+        /// </summary>
+        /// <param name="album">un album</param>
+        /// <returns>Retourne vrai si l'album a bien été supprimé sinon retourne faux</returns>
+        public bool SupprimerAlbum(Album album)
+        {
+            if (album is null)
+                throw new ArgumentNullException("Album", "L'album a supprimé ne peut pas être null");
+            foreach(Album pAlbum in Albums)
+            {
+                if(pAlbum == album)
+                {
+                    Albums.Remove(album);
+                    return true;
+                }
+            }
 
             return false;
         }

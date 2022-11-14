@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TP2_420_14B_FX"
         mc:Ignorable="d"
-        Title="Album" Height="400" Width="550" Background="#191414">
+        Title="Album" Height="400" Width="600" Background="#191414" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -21,7 +21,7 @@
             <Border  Width="200" Height="200" BorderThickness="1" BorderBrush="White" CornerRadius="5">
                 <Image x:Name="imgAlbum"/>
             </Border>
-            <Button x:Name="btnParcourir" Content="Parcourir..." Width="100" Margin="0,10,0,10" HorizontalAlignment="Left"/>
+            <Button x:Name="btnParcourir" Content="Parcourir..." Width="100" Margin="0,10,0,10" HorizontalAlignment="Left" Click="btnParcourir_Click"/>
         </StackPanel>
         <StackPanel Orientation="Vertical" Margin="10" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch">
             <StackPanel Orientation="Horizontal" Margin="10">
@@ -38,8 +38,8 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10">
-            <Button x:Name="btnAjouterModifier" Content="Modifier" Width="60" Margin="10,0,10,0"/>
-            <Button x:Name="btnAnnuler" Content="Annuler" Width="60" Margin="10,0,10,0"/>
+            <Button x:Name="btnAjouterModifier" Content="Modifier" Width="60" Margin="10,0,10,0" Click="btnAjouterModifier_Click"/>
+            <Button x:Name="btnAnnuler" Content="Annuler" Width="60" Margin="10,0,10,0" Click="btnAnnuler_Click"/>
         </StackPanel>
     </Grid>
 </Window>
