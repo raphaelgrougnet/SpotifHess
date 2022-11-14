@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Media;
@@ -38,6 +39,7 @@ namespace TP2_420_14B_FX
             {
                 cboStyle.Items.Add(style);
             }
+            _chansonAjoutModif = chanson;
             
             
             //Initialiseation du lecteur utiliser pour ouvrir le ficheir selectionné afin
@@ -75,18 +77,27 @@ namespace TP2_420_14B_FX
                 _mediaPlayer.Open(new Uri(fichier));
                 lblFichier.Content = fichier;
                 
-
             }
         }
 
         private void btnAjouterModifier_Click(object sender, RoutedEventArgs e)
         {
-            Guid guid = Guid.NewGuid();
-            string titre = txtTitre.Text.Trim();
-            StyleMusical style = (StyleMusical) cboStyle.SelectedItem;
-            TimeSpan duree = (TimeSpan) lblDuree.Content;
-            string fichier = guid + ".mp3";
-            ChansonAjoutModif = new Chanson(guid, titre, style, duree, fichier);
+            if (_chansonAjoutModif == null)
+            {
+                Guid guid = Guid.NewGuid();
+                string titre = txtTitre.Text.Trim();
+                
+                if (cboStyle.SelectedIndex == -1)
+                {
+                    throw new IndexOutOfRangeException("Selectionner un style musical");
+                }
+                StyleMusical style = (StyleMusical)cboStyle.SelectedItem;
+                TimeSpan duree = TimeSpan.Parse((string)lblDuree.Content);
+                string fichier = guid + ".mp3";
+                ChansonAjoutModif = new Chanson(guid, titre, style, duree, fichier);
+                File.Copy((string)lblFichier.Content, GestionMusique.CHEMIN_DOSSIER_MP3 + "\\" + fichier);
+            }
+            
             DialogResult = true;
         }
 
@@ -94,5 +105,7 @@ namespace TP2_420_14B_FX
         {
             DialogResult = false;
         }
+
+        
     }
 }

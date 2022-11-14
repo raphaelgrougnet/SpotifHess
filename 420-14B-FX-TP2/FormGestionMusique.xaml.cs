@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -500,7 +501,23 @@ namespace TP2_420_14B_FX
 
                 if (frmChanson.DialogResult == true)
                 {
+                    
 
+                    Album selectAlbum = (Album)lstAlbums.SelectedItem;
+                    Chanson newSong = frmChanson.ChansonAjoutModif;
+                    selectAlbum.AjouterChanson(newSong);
+                    string ligneGrande = "";
+                    foreach (string ligne in Utilitaire.ChargerDonnees(GestionMusique.CHEMIN_FICHIER_CHANSONS))
+                    {
+                        ligneGrande += ligne+"\n";
+                    }
+                    ligneGrande += $"{newSong.Id};{newSong.Titre};{newSong.Style};{newSong.Duree};{newSong.Fichier};{selectAlbum.Id}\n";
+
+
+                    Utilitaire.EnregistrerDonnees(GestionMusique.CHEMIN_FICHIER_CHANSONS, ligneGrande);
+                    
+                    lstChansons.Items.Clear();
+                    AfficherListeChansons();
                 }
             }
             else

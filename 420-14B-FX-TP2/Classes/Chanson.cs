@@ -56,11 +56,15 @@ namespace TP2_420_14B_FX.Classes
             set
             {
                 //todo : implémenter la validation FAIT
-                if (value != null)
+                if (value != Guid.Empty)
                 {
                     _id = value;
                 }
-                
+                else
+                {
+                    throw new ArgumentNullException("Id", "L'id ne peut pas être nul");
+                }
+
             }
         }
 
@@ -78,8 +82,12 @@ namespace TP2_420_14B_FX.Classes
                 {
                     _titre = value.Trim();
                 }
+                else
+                {
+                    throw new ArgumentNullException("Titre", "Le titre ne peut pas être nul");
+                }
                 //todo : implémenter la validation FAIT
-                
+
             }
         }
 
@@ -155,11 +163,15 @@ namespace TP2_420_14B_FX.Classes
             set
             {
                 //todo : implémenter la validation FAIT
-                if (value != null)
+                if (value != TimeSpan.Zero)
                 {
                     _duree = value;
                 }
-               
+                else
+                {
+                    throw new ArgumentNullException("Durée", "La durée ne peut pas être nulle");
+                }
+
             }
         }
 
@@ -176,6 +188,10 @@ namespace TP2_420_14B_FX.Classes
                 if (!String.IsNullOrWhiteSpace(value))
                 {
                     _fichier = value.Trim();
+                }
+                else
+                {
+                    throw new ArgumentNullException("Fichier", "Le fichier ne peut pas être nul");
                 }
             }
         }
