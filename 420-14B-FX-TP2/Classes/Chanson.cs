@@ -269,6 +269,7 @@ namespace TP2_420_14B_FX.Classes
             return this == (Chanson)obj;
         }
 
+
     
 
 

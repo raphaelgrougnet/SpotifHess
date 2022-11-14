@@ -465,10 +465,14 @@ namespace TP2_420_14B_FX
         {
             if (lstAlbums.SelectedIndex != -1)
             {
-                FormChanson frmChanson = new FormChanson();
-                frmChanson.lblTitreForm.Content = "Ajouter une chanson";
-                frmChanson.btnAjouterModifier.Content = "Ajouter";
+                FormChanson frmChanson = new FormChanson(null,Enums.EtatChanson.Ajouter);
+                
                 frmChanson.ShowDialog();
+
+                if (frmChanson.DialogResult == true)
+                {
+
+                }
             }
             else
             {

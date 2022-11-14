@@ -3,106 +3,45 @@ using System;
 using System.Text;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using TP2_420_14B_FX.Classes;
 using TP2_420_14B_FX.Enums;
 
 namespace TP2_420_14B_FX
 {
+
+
+
+
     /// <summary>
     /// Logique d'interaction pour frmChanson.xaml
     /// </summary>
     public partial class FormChanson : Window
     {
-
-
-
-        #region CONSTANTES
-
-        #endregion
-
-        #region ATTRIBUTS
         MediaPlayer _mediaPlayer;
-        #endregion
 
-        #region PROPRIÉTÉS ET INDEXEURS
-        private Guid _id;
-        private string _titre;
-        private StyleMusical _styleMusical;
-        private TimeSpan _duree;
-        private string _fichier;
+        private Chanson _chansonAjoutModif;
 
-
-
-        public Guid Id
+        public Chanson ChansonAjoutModif
         {
-            get { return _id; }
-            set 
-            {
-                if (value == Guid.Empty)
-                {
-                    throw new ArgumentNullException("Id", "L'id de la chanson ne peut pas être nul");
-                }
-                _id = value; 
-            }
+            get { return _chansonAjoutModif; }
+            set { _chansonAjoutModif = value; }
         }
+            
 
-        public string Titre
-        {
-            get { return _titre; }
-            set
-            {
-                if (String.IsNullOrWhiteSpace(value.Trim()))
-                {
-                    throw new ArgumentNullException("Titre", "Le titre ne peut pas être vide, nul");
-                }
-                _titre = value.Trim(); 
-            }
-        }
-
-        public StyleMusical StyleMusical
-        {
-            get { return _styleMusical; }
-            set
-            {
-                if (!Enum.IsDefined(typeof(StyleMusical), value))
-                {
-                    throw 
-                }
-                _styleMusical = value; 
-            }
-        }
-
-        public TimeSpan Duree
-        {
-            get { return _duree; }
-            set { _duree = value; }
-        }
-
-        public string Fichier
-        {
-            get { return _fichier; }
-            set { _fichier = value; }
-        }
-
-
-
-        #endregion
-
-        #region CONSTRUCTEURS
-
-        #endregion
-
-        #region MÉTHODES
-
-
-
-
-        public FormChanson( Chanson chanson = null)
+        public FormChanson( Chanson chanson = null, EtatChanson etat = EtatChanson.Modifier)
         {
             InitializeComponent();
-
-             //Initialiseation du lecteur utiliser pour ouvrir le ficheir selectionné afin
-             //de déterminer la durée de la chanson.
+            lblTitreForm.Content = etat.ToString()+" une chanson";
+            btnAjouterModifier.Content = etat.ToString();
+            foreach (StyleMusical style in (StyleMusical[])Enum.GetValues(typeof(StyleMusical)))
+            {
+                cboStyle.Items.Add(style);
+            }
+            
+            
+            //Initialiseation du lecteur utiliser pour ouvrir le ficheir selectionné afin
+            //de déterminer la durée de la chanson.
             _mediaPlayer = new MediaPlayer();
             _mediaPlayer.MediaOpened += MediaOpened;
         }
@@ -118,14 +57,42 @@ namespace TP2_420_14B_FX
         {
             if (_mediaPlayer.NaturalDuration.HasTimeSpan)
             {
-                //todo: Afficher le durée de la chanson dans le label correspondant.
-                // =  _mediaPlayer.NaturalDuration.TimeSpan.ToString(@"mm\:ss");
+                //todo: Afficher le durée de la chanson dans le label correspondant. FAIT
+                lblDuree.Content = _mediaPlayer.NaturalDuration.TimeSpan.ToString(@"mm\:ss");
             }
 
         }
 
-        #endregion
+        private void btnParcourir_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Choisir une chanson";
+            openFileDialog.Filter = "Fichier mp3 (*.mp3)|*.mp3";
 
+            if ((bool)openFileDialog.ShowDialog())
+            {
+                string fichier = openFileDialog.FileName;
+                _mediaPlayer.Open(new Uri(fichier));
+                lblFichier.Content = fichier;
+                
 
+            }
+        }
+
+        private void btnAjouterModifier_Click(object sender, RoutedEventArgs e)
+        {
+            Guid guid = Guid.NewGuid();
+            string titre = txtTitre.Text.Trim();
+            StyleMusical style = (StyleMusical) cboStyle.SelectedItem;
+            TimeSpan duree = (TimeSpan) lblDuree.Content;
+            string fichier = guid + ".mp3";
+            ChansonAjoutModif = new Chanson(guid, titre, style, duree, fichier);
+            DialogResult = true;
+        }
+
+        private void btnAnnuler_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+        }
     }
 }

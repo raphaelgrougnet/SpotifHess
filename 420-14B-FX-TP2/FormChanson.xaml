@@ -46,10 +46,10 @@
 
 
         <StackPanel Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10">
-            <Label Name="lblDuree" Content="Durée" FontSize="13"/>
+            <Label Content="Durée" FontSize="13"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5">
-            <Label Content="..." FontSize="15"/>
+            <Label Name="lblDuree" Content="..." FontSize="15"/>
         </StackPanel>
 
 
@@ -63,13 +63,13 @@
 
 
         <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0 0 0" Width="125">
-            <Button x:Name="btnParcourir" Content="Parcourir ..."/>
+            <Button x:Name="btnParcourir" Content="Parcourir ..." Click="btnParcourir_Click"/>
         </StackPanel>
 
 
         <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <Button x:Name="btnAjouterModifier" Content="Modifier" Margin="0 0 5 10"/>
-            <Button x:Name="btnAnnuler" Content="Annuler" Margin="0 0 5 10"/>
+            <Button x:Name="btnAjouterModifier" Content="Modifier" Margin="0 0 5 10" Click="btnAjouterModifier_Click"/>
+            <Button x:Name="btnAnnuler" Content="Annuler" Margin="0 0 5 10" Click="btnAnnuler_Click"/>
         </StackPanel>
         
     </Grid>
