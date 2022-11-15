@@ -1,9 +1,11 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.IO;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -25,6 +27,7 @@ namespace TP2_420_14B_FX
         public const string IMAGE_ALEATOIRE = "Shuffle.png";
         public const string IMAGE_ALEATOIRE_SELECT = "Shuffle_selected.png";
         public const string RESSOURCE_URI = @"pack://application:,,,/Resources/";
+
         #endregion
 
         #region ATTRIBUTS
@@ -412,13 +415,26 @@ namespace TP2_420_14B_FX
             {
                 Album nouvAlbum = frmAlbum.pAlbum;
 
-                nouvAlbum.Image = Guid.NewGuid().ToString();
-
                 _gestionMusique.Albums.Add(nouvAlbum);
 
+                string enregistrerAlbum = "";
+
+                string[] vectAlbums = Utilitaire.ChargerDonnees(GestionMusique.CHEMIN_FICHIER_ALBUMS);
+
+                List<string> listAlbums = new List<string>(vectAlbums);
+
+                listAlbums.Add($"\n{nouvAlbum.Id};{nouvAlbum.Titre};{nouvAlbum.Artiste};{nouvAlbum.Annee};{nouvAlbum.Image}\n");
+
+                foreach(string ligne in listAlbums)
+                {
+                    enregistrerAlbum += ligne;
+                }
+
+                Utilitaire.EnregistrerDonnees(GestionMusique.CHEMIN_FICHIER_ALBUMS, enregistrerAlbum);
+                
                 AfficherListeAlbums();
 
-
+                DialogResult = true;
 
                 MessageBox.Show("Ajout de l'abum fait avec succès !" + nouvAlbum.ToString(), 
                     "Ajout d'un album", MessageBoxButton.OK, MessageBoxImage.Information);

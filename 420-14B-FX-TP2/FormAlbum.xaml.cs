@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Media.Imaging;
@@ -15,6 +16,7 @@ namespace TP2_420_14B_FX
     {
         #region CONSTANTES
 
+        
 
         #endregion
 
@@ -147,13 +149,19 @@ namespace TP2_420_14B_FX
                         string titre = txtTitre.Text;
                         ushort annee = ushort.Parse(txtAnnee.Text);
                         string artistes = txtArtiste.Text;
-                        string image = imgAlbum.Source.ToString();
 
-                        //Utilitaire.EnregistrerDonnees(image); Voir prof
+                        BitmapImage imgAl = imgAlbum.Source as BitmapImage;
+                        string cheminFichier = imgAl.UriSource.LocalPath;
+                        string image = Path.GetFileName(cheminFichier);
+
+                        string ext = Path.GetExtension(image);
+                        image = Guid.NewGuid() + ext;
+                        File.Copy(cheminFichier, GestionMusique.CHEMIN_IMAGES_ALBUMS + image, true);
+
 
                         pAlbum = new Album(false, Guid.NewGuid(), titre, annee, image, artistes);
 
-                        DialogResult = true;
+                        
                     }
                     break;
                 case EtatAlbum.Modifier:
@@ -163,7 +171,7 @@ namespace TP2_420_14B_FX
                         pAlbum.Titre = txtTitre.Text;
                         pAlbum.Annee = ushort.Parse(txtAnnee.Text);
                         pAlbum.Artiste = txtArtiste.Text;
-                        pAlbum.Image = imgAlbum.Source.ToString(); //Demander prof
+                        
 
                         DialogResult = true;
                     }
