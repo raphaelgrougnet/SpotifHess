@@ -529,6 +529,7 @@ namespace TP2_420_14B_FX
                     
                     lstChansons.Items.Clear();
                     AfficherListeChansons();
+                    AfficherDetailsAlbum();
                     _gestionMusique.EnregistrerChansons();
                     MessageBox.Show("L'ajout de la chanson a été effectué avec succès !", "Ajouter une chansons", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -568,6 +569,7 @@ namespace TP2_420_14B_FX
 
                         lstChansons.Items.Clear();
                         AfficherListeChansons();
+                        AfficherDetailsAlbum();
                         _gestionMusique.EnregistrerChansons();
                         MessageBox.Show("La modification a été effectué avec succès !", "Modifier une chansons", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -592,12 +594,16 @@ namespace TP2_420_14B_FX
         {
             if (lstChansons.SelectedIndex != -1)
             {
+                InitialiserLecteurMusique();
                 Album selectAlbum = (Album)lstAlbums.SelectedItem;
                 Chanson selectChanson = (Chanson)lstChansons.SelectedItem;
                 File.Delete(GestionMusique.CHEMIN_DOSSIER_MP3 + "\\" + selectChanson.Fichier);
                 selectAlbum.SupprimerChanson((Chanson)lstChansons.SelectedItem);
+                AfficherDetailsAlbum();
+                AfficherListeChansons();
                 _gestionMusique.EnregistrerChansons();
-                
+                MessageBox.Show("La suppression de la chanson s'est effectuée avec succès !", "Supprimer une chansons", MessageBoxButton.OK, MessageBoxImage.Information);
+
             }
             else
             {
@@ -605,7 +611,7 @@ namespace TP2_420_14B_FX
 
             }
             //Implémenter la méthode SupprimerChanson
-            throw new NotImplementedException();
+            
         }
 
         /// <summary>
