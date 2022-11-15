@@ -464,7 +464,7 @@ namespace TP2_420_14B_FX
         private void SupprimerAlbum()
         {
             //Implémenter la méthode SupprimerAlbum
-            throw new NotImplementedException();
+            
         }
 
         /// <summary>
