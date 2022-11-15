@@ -415,7 +415,7 @@ namespace TP2_420_14B_FX
             {
                 Album nouvAlbum = frmAlbum.pAlbum;
 
-                _gestionMusique.Albums.Add(nouvAlbum);
+                _gestionMusique.AjouterAlbum(nouvAlbum);
 
                 _gestionMusique.EnregisterAlbum();
                 
