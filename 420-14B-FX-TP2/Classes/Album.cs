@@ -298,7 +298,7 @@ namespace TP2_420_14B_FX.Classes
         {
             if (pChanson != null)
             {
-                if (_chansons.Equals(pChanson))
+                if (_chansons.Contains(pChanson))
                 {
                     return true;
                 }

@@ -266,6 +266,27 @@ namespace TP2_420_14B_FX.Classes
             _albums.Sort();
         }
 
+        /// <summary>
+        /// Permet d'enregistrer les chansons dans le fichier csv
+        /// </summary>
+        public void EnregistrerChansons()
+        {
+            
+            string grandeLigne = "Id;Titre;Style;Duree;Fichier;IdAlbum\n";
+            foreach (Album album in Albums)
+            {
+                for (byte i = 0; i < album.NbChansons; i++)
+                {
+                    
+                    Chanson chanson = album.ObtenirChanson(i);
+                    grandeLigne += $"{chanson.Id};{chanson.Titre};{chanson.Style};{chanson.Duree};{chanson.Fichier};{album.Id}\n";
+                }
+                
+            }
+            Utilitaire.EnregistrerDonnees(CHEMIN_FICHIER_CHANSONS, grandeLigne);
+            
+        }
+
         #endregion
 
     }
