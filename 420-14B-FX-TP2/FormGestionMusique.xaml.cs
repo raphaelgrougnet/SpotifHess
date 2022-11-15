@@ -582,17 +582,29 @@ namespace TP2_420_14B_FX
                 InitialiserLecteurMusique();
                 Album selectAlbum = (Album)lstAlbums.SelectedItem;
                 Chanson selectChanson = (Chanson)lstChansons.SelectedItem;
-                File.Delete(GestionMusique.CHEMIN_DOSSIER_MP3 + "\\" + selectChanson.Fichier);
-                selectAlbum.SupprimerChanson((Chanson)lstChansons.SelectedItem);
-                AfficherDetailsAlbum();
-                AfficherListeChansons();
-                _gestionMusique.EnregistrerChansons();
-                MessageBox.Show("La suppression de la chanson s'est effectuée avec succès !", "Supprimer une chansons", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBoxResult resultat = MessageBox.Show($"Voulez-vous vraiment supprimer la chanson {selectChanson.Titre} ?",
+                    "Supprimer une chanson", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (resultat ==  MessageBoxResult.Yes)
+                {
+                    File.Delete(GestionMusique.CHEMIN_DOSSIER_MP3 + "\\" + selectChanson.Fichier);
+                    selectAlbum.SupprimerChanson((Chanson)lstChansons.SelectedItem);
+                    AfficherDetailsAlbum();
+                    AfficherListeChansons();
+                    _gestionMusique.EnregistrerChansons();
+
+                    MessageBox.Show("La suppression de la chanson s'est effectuée avec succès !", "Supprimer une chanson", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("La suppression de la chanson ne s'est pas effectuée.", "Supprimer une chanson", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                }
+
 
             }
             else
             {
-                MessageBox.Show("Vous devez sélectionner une chanson dans la liste.", "Supprimer une chansons", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Vous devez sélectionner une chanson dans la liste.", "Supprimer une chanson", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
             //Implémenter la méthode SupprimerChanson
