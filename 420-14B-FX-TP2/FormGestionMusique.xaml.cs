@@ -28,10 +28,6 @@ namespace TP2_420_14B_FX
         public const string IMAGE_ALEATOIRE_SELECT = "Shuffle_selected.png";
         public const string RESSOURCE_URI = @"pack://application:,,,/Resources/";
 
-        /// <summary>
-        /// Première ligne de le fichier albums.csv
-        /// </summary>
-        public const string PREMIERE_LIGNE = "Id;Titre;Artist(s);Annee;Image";
         #endregion
 
         #region ATTRIBUTS
@@ -422,8 +418,6 @@ namespace TP2_420_14B_FX
                 _gestionMusique.Albums.Add(nouvAlbum);
 
                 string enregistrerAlbum = "";
-
-                enregistrerAlbum += PREMIERE_LIGNE;
 
                 string[] vectAlbums = Utilitaire.ChargerDonnees(GestionMusique.CHEMIN_FICHIER_ALBUMS);
 
