@@ -49,7 +49,7 @@
             <Label Content="Durée" FontSize="13"/>
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5">
-            <Label Name="lblDuree" FontSize="15"/>
+            <Label Name="lblDuree" FontSize="13"/>
         </StackPanel>
 
 
@@ -58,7 +58,7 @@
             <Label Content="Fichier" FontSize="13"/>
         </StackPanel>
         <StackPanel Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5">
-            <Label Name="lblFichier" FontSize="15"/>
+            <Label Name="lblFichier" FontSize="13"/>
         </StackPanel>
 
 
