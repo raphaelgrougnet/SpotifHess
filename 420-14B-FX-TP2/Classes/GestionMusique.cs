@@ -252,10 +252,11 @@ namespace TP2_420_14B_FX.Classes
             string grandeLigne = "Id;Titre;Style;Duree;Fichier;IdAlbum\n";
             foreach (Album album in Albums)
             {
-                for (int i = 0; i < Albums.Count; i++)
+                for (byte i = 0; i < album.NbChansons; i++)
                 {
-                    Chanson chanson = album.ObtenirChanson((byte)i);
-                    grandeLigne += $"{chanson.Id};{chanson.Titre};{chanson.Style}{chanson.Fichier};{album.Id}\n";
+                    
+                    Chanson chanson = album.ObtenirChanson(i);
+                    grandeLigne += $"{chanson.Id};{chanson.Titre};{chanson.Style};{chanson.Duree};{chanson.Fichier};{album.Id}\n";
                 }
                 
             }
