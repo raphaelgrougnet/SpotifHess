@@ -417,24 +417,9 @@ namespace TP2_420_14B_FX
 
                 _gestionMusique.Albums.Add(nouvAlbum);
 
-                string enregistrerAlbum = "";
-
-                string[] vectAlbums = Utilitaire.ChargerDonnees(GestionMusique.CHEMIN_FICHIER_ALBUMS);
-
-                List<string> listAlbums = new List<string>(vectAlbums);
-
-                listAlbums.Add($"\n{nouvAlbum.Id};{nouvAlbum.Titre};{nouvAlbum.Artiste};{nouvAlbum.Annee};{nouvAlbum.Image}\n");
-
-                foreach(string ligne in listAlbums)
-                {
-                    enregistrerAlbum += ligne;
-                }
-
-                Utilitaire.EnregistrerDonnees(GestionMusique.CHEMIN_FICHIER_ALBUMS, enregistrerAlbum);
+                _gestionMusique.EnregisterAlbum();
                 
                 AfficherListeAlbums();
-
-                DialogResult = true;
 
                 MessageBox.Show("Ajout de l'abum fait avec succès !" + nouvAlbum.ToString(), 
                     "Ajout d'un album", MessageBoxButton.OK, MessageBoxImage.Information);

@@ -16,7 +16,7 @@ namespace TP2_420_14B_FX
     {
         #region CONSTANTES
 
-        
+        public const string CHEMIN_IMAGES_ALBUMS = @"C:\data-420-14B-FX\data-tp2-420-14b\albums\\";
 
         #endregion
 
@@ -156,11 +156,12 @@ namespace TP2_420_14B_FX
 
                         string ext = Path.GetExtension(image);
                         image = Guid.NewGuid() + ext;
-                        File.Copy(cheminFichier, GestionMusique.CHEMIN_IMAGES_ALBUMS + image, true);
+                        File.Copy(cheminFichier, CHEMIN_IMAGES_ALBUMS + image, true);
 
 
                         pAlbum = new Album(false, Guid.NewGuid(), titre, annee, image, artistes);
 
+                        DialogResult = true;
                         
                     }
                     break;

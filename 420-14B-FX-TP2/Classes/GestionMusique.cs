@@ -13,6 +13,11 @@ namespace TP2_420_14B_FX.Classes
         public const string CHEMIN_FICHIER_CHANSONS = @"C:\data-420-14B-FX\data-tp2-420-14b\chansons.csv";
         public const string CHEMIN_DOSSIER_MP3 = @"C:\data-420-14B-FX\data-tp2-420-14b\mp3";
         public const string CHEMIN_IMAGES_ALBUMS = @"C:\data-420-14B-FX\data-tp2-420-14b\albums";
+
+        /// <summary>
+        /// Première ligne du fichier albums.csv
+        /// </summary>
+        public const string PREMIERE_LIGNE_ALBUMS = "Id;Titre;Artist(s);Annee;Image\n";
         #endregion
 
         #region ATTRIBUTS
@@ -144,6 +149,24 @@ namespace TP2_420_14B_FX.Classes
             }
 
             
+        }
+
+
+        /// <summary>
+        /// Enregistre les albums dans le fichier albums.csv
+        /// </summary>
+        public void EnregisterAlbum()
+        {
+            string enregistrerAlbum = "";
+
+            enregistrerAlbum += PREMIERE_LIGNE_ALBUMS;
+
+            for(int i = 0; i < NbAlbums; i++)
+            {
+                enregistrerAlbum += Albums[i].Id + ";" + Albums[i].Titre + ";" + Albums[i].Artiste + ";"
+                    + Albums[i].Annee + ";" + Albums[i].Image + ";\n";
+            }
+            Utilitaire.EnregistrerDonnees(CHEMIN_FICHIER_ALBUMS, enregistrerAlbum);
         }
 
         /// <summary>
