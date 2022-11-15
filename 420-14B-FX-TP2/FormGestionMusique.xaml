@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TP2_420_14B_FX"
         mc:Ignorable="d" 
-        Title="MainWindow" Height="680" Width="800" Loaded="Window_Loaded" Background="#191414">
+        Title="Spotifesse" Height="680" Width="800" Loaded="Window_Loaded" Background="#191414"
+        >
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
