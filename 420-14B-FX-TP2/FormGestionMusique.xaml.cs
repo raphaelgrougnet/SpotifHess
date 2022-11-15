@@ -497,7 +497,7 @@ namespace TP2_420_14B_FX
             if (lstAlbums.SelectedIndex != -1)
             {
                 FormChanson frmChanson = new FormChanson(null,Enums.EtatChanson.Ajouter);
-                
+                lstChansons.SelectedIndex = -1;
                 _mediaPlayer.Close();
                 //InitialiserLecteurMusique();
                 frmChanson.ShowDialog();
@@ -508,6 +508,7 @@ namespace TP2_420_14B_FX
                     
                     Album selectAlbum = (Album)lstAlbums.SelectedItem;
                     Chanson newSong = frmChanson.ChansonAjoutModif;
+                    File.Copy((string)frmChanson.lblFichier.Content, GestionMusique.CHEMIN_DOSSIER_MP3 + "\\" + frmChanson.ChansonAjoutModif.Fichier);
                     selectAlbum.AjouterChanson(newSong);
                     
                     lstChansons.Items.Clear();
@@ -535,16 +536,16 @@ namespace TP2_420_14B_FX
                 {
                     
                     FormChanson frmChanson = new FormChanson((Chanson) lstChansons.SelectedItem, Enums.EtatChanson.Modifier);
-                    
+                    lstChansons.SelectedIndex = -1;
                     _mediaPlayer.Close();
                     InitialiserLecteurMusique();
                     frmChanson.ShowDialog();
                     if (frmChanson.DialogResult == true)
                     {
-                        Album selectAlbum = (Album)lstAlbums.SelectedItem;
-                        Chanson newSong = frmChanson.ChansonAjoutModif;
-                        
-                        lstChansons.SelectedItem = newSong;
+                        if ((string)frmChanson.lblFichier.Content != frmChanson.ChansonAjoutModif.Fichier)
+                        {
+                            File.Copy((string)frmChanson.lblFichier.Content, GestionMusique.CHEMIN_DOSSIER_MP3 + "\\" + frmChanson.ChansonAjoutModif.Fichier, true);
+                        }
 
                         lstChansons.Items.Clear();
                         AfficherListeChansons();

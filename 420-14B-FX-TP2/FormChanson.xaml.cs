@@ -42,7 +42,7 @@ namespace TP2_420_14B_FX
             {
                 cboStyle.Items.Add(style);
             }
-            _chansonAjoutModif = chanson;
+            ChansonAjoutModif = chanson;
 
             if (etat == EtatChanson.Modifier)
             {
@@ -96,52 +96,37 @@ namespace TP2_420_14B_FX
 
         private void btnAjouterModifier_Click(object sender, RoutedEventArgs e)
         {
-            if (_chansonAjoutModif == null)
+            if (ChansonAjoutModif == null)
             {
-                Guid guid = Guid.NewGuid();
-                string titre = txtTitre.Text.Trim();
                 
-                if (cboStyle.SelectedIndex == -1)
+                if (ValiderChanson())
                 {
-                    throw new IndexOutOfRangeException("Sélectionnez un style musical");
-                }
-                StyleMusical style = (StyleMusical)cboStyle.SelectedItem;
-                TimeSpan duree = TimeSpan.Parse((string)lblDuree.Content);
-                string fichier = guid + ".mp3";
-                if (ValiderChanson(titre,style,fichier))
-                {
+                    Guid guid = Guid.NewGuid();
+                    string titre = txtTitre.Text.Trim();
+                    StyleMusical style = (StyleMusical)cboStyle.SelectedItem;
+                    TimeSpan duree = TimeSpan.Parse((string)lblDuree.Content);
+                    string fichier = guid + ".mp3";
                     ChansonAjoutModif = new Chanson(guid, titre, style, duree, fichier);
-                    File.Copy((string) lblFichier.Content, GestionMusique.CHEMIN_DOSSIER_MP3 + "\\" + _chansonAjoutModif.Fichier);
+                    
                 }
                 
             }
             else
             {
-                Guid guid = _chansonAjoutModif.Id;
-                string titre = txtTitre.Text.Trim();
+                
 
-                if (cboStyle.SelectedIndex == -1)
+                if (ValiderChanson())
                 {
-                    throw new IndexOutOfRangeException("Sélectionnez un style musical");
-                }
-                StyleMusical style = (StyleMusical)cboStyle.SelectedItem;
-                TimeSpan duree = TimeSpan.Parse((string)lblDuree.Content);
-                string fichier = guid + ".mp3";
-
-               
-                if (ValiderChanson(titre, style, fichier))
-                {
-
-                    _chansonAjoutModif = new Chanson(guid, titre, style, duree, fichier);
-                    if (parcourru)
-                    {
-                        File.Copy((string) lblFichier.Content, GestionMusique.CHEMIN_DOSSIER_MP3 + "\\" + _chansonAjoutModif.Fichier, true);
-                        parcourru = false;
-                    }
-                    else
-                    {
-                        File.Copy(GestionMusique.CHEMIN_DOSSIER_MP3 + "\\" + fichier, GestionMusique.CHEMIN_DOSSIER_MP3 + "\\" + _chansonAjoutModif.Fichier, true);
-                    }
+                    
+                    string titre = txtTitre.Text.Trim();
+                    StyleMusical style = (StyleMusical)cboStyle.SelectedItem;
+                    TimeSpan duree = TimeSpan.Parse((string)lblDuree.Content);
+                    
+                    ChansonAjoutModif.Titre = titre;
+                    ChansonAjoutModif.Style = style;
+                    ChansonAjoutModif.Duree = duree;
+                    
+                    
                     
                 }
             }
@@ -154,19 +139,21 @@ namespace TP2_420_14B_FX
             DialogResult = false;
         }
 
-        private bool ValiderChanson(string titre, StyleMusical style, string fichier)
+        private bool ValiderChanson()
         {
             string message = "";
             
-            if (String.IsNullOrWhiteSpace(titre))
+            if (String.IsNullOrWhiteSpace(txtTitre.Text))
             {
                 message += "Le titre de la chanson ne peut pas être nul, vide ou ne contenir que des espaces\n";
             }
-            if (!Enum.IsDefined(typeof(StyleMusical), style))
+
+            
+            if (cboStyle.SelectedIndex == -1)
             {
-                message += "Le style de musique choisi n'est pas défini";
+                message += "Sélectionnez un style musical\n";
             }
-            if (String.IsNullOrWhiteSpace(fichier))
+            if (String.IsNullOrWhiteSpace((string)lblFichier.Content))
             {
                 message += "Vous devez sélectionner un fichier";
             }

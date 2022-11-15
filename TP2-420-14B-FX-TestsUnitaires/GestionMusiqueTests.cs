@@ -13,7 +13,7 @@ namespace TP2_420_14B_FX_TestsUnitaires
             Guid id = Guid.NewGuid();
 
 
-            return new Album(id, "Un album", 2022, "Un artiste", id + ".jpg");
+            return new Album(false, id, "Un album", 2022, id + ".jpg", "Un artiste");
 
 
         }

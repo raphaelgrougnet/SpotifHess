@@ -5,7 +5,7 @@ using TP2_420_14B_FX.Enums;
 
 namespace TP2_420_14B_FX.Classes
 {
-    class GestionMusique
+    public class GestionMusique
     {
 
         #region CONSTANTES
