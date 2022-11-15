@@ -421,7 +421,7 @@ namespace TP2_420_14B_FX
                 
                 AfficherListeAlbums();
 
-                MessageBox.Show("Ajout de l'abum fait avec succès !" + nouvAlbum.ToString(), 
+                MessageBox.Show("L'ajout de votre album a été effectué avec succès! " + nouvAlbum.ToString(), 
                     "Ajout d'un album", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
@@ -464,7 +464,7 @@ namespace TP2_420_14B_FX
         private void SupprimerAlbum()
         {
             //Implémenter la méthode SupprimerAlbum
-            throw new NotImplementedException();
+            
         }
 
         /// <summary>
