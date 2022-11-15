@@ -529,6 +529,7 @@ namespace TP2_420_14B_FX
                     
                     lstChansons.Items.Clear();
                     AfficherListeChansons();
+                    _gestionMusique.EnregistrerChansons();
                 }
             }
             else
@@ -565,6 +566,7 @@ namespace TP2_420_14B_FX
 
                         lstChansons.Items.Clear();
                         AfficherListeChansons();
+                        _gestionMusique.EnregistrerChansons();
                     }
                 }
                 else
