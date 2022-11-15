@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -516,10 +518,23 @@ namespace TP2_420_14B_FX
         {
             if (lstAlbums.SelectedIndex != -1)
             {
-                FormChanson frmChanson = new FormChanson();
-                frmChanson.lblTitreForm.Content = "Ajouter une chanson";
-                frmChanson.btnAjouterModifier.Content = "Ajouter";
+                FormChanson frmChanson = new FormChanson(null,Enums.EtatChanson.Ajouter);
+                
+                _mediaPlayer.Close();
+                //InitialiserLecteurMusique();
                 frmChanson.ShowDialog();
+
+                if (frmChanson.DialogResult == true)
+                {
+
+                    
+                    Album selectAlbum = (Album)lstAlbums.SelectedItem;
+                    Chanson newSong = frmChanson.ChansonAjoutModif;
+                    selectAlbum.AjouterChanson(newSong);
+                    
+                    lstChansons.Items.Clear();
+                    AfficherListeChansons();
+                }
             }
             else
             {
@@ -536,8 +551,34 @@ namespace TP2_420_14B_FX
         /// Sinon, alors on modifie la chanson, enregistre les données, met à jour la liste et affiche un message de confirmation.</remarks>
         private void ModifierChanson()
         {
-            //Implémenter la méthode ModifierChanson
-            throw new NotImplementedException();
+            if (lstAlbums.SelectedIndex != -1)
+            {
+                if (lstChansons.SelectedIndex != -1)
+                {
+                    
+                    FormChanson frmChanson = new FormChanson((Chanson) lstChansons.SelectedItem, Enums.EtatChanson.Modifier);
+                    
+                    _mediaPlayer.Close();
+                    InitialiserLecteurMusique();
+                    frmChanson.ShowDialog();
+                    if (frmChanson.DialogResult == true)
+                    {
+                        Album selectAlbum = (Album)lstAlbums.SelectedItem;
+                        Chanson newSong = frmChanson.ChansonAjoutModif;
+                        
+                        lstChansons.SelectedItem = newSong;
+
+                        lstChansons.Items.Clear();
+                        AfficherListeChansons();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vous devez sélectionner une chanson dans la liste ou en créer une.", "Modifier une chansons", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            //Implémenter la méthode ModifierChanson FAIT
+            
         }
 
         /// <summary>
