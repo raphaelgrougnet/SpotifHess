@@ -488,6 +488,7 @@ namespace TP2_420_14B_FX
                 }
                 File.Delete(GestionMusique.CHEMIN_IMAGES_ALBUMS + "\\" + albumSelected.Image);
                 _gestionMusique.SupprimerAlbum(albumSelected);
+                _gestionMusique.EnregistrerChansons();
                 _gestionMusique.EnregisterAlbum();
                 AfficherListeAlbums();
                 InitialiserDetailsAlbums();
