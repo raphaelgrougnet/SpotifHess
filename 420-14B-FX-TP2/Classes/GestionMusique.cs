@@ -175,12 +175,12 @@ namespace TP2_420_14B_FX.Classes
         /// <param name="album">Un album</param>
         public void AjouterAlbum(Album album)
         {
-            if (!AlbumExiste(album))
-                Albums.Add(album);
+            if (AlbumExiste(album))
+                throw new Exception("L'album existe déjà");
             else if (album is null)
                 throw new ArgumentNullException("Album", "Un album ne peut pas être null");
             else
-                throw new Exception("L'album existe déjà");
+                Albums.Add(album);
         }
 
         /// <summary>

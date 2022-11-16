@@ -442,7 +442,7 @@ namespace TP2_420_14B_FX.Classes
             else if (albumGauche is null || albumDroite is null)
                 return false;
             else if (albumGauche.Titre == albumDroite.Titre && albumGauche.Annee == albumDroite.Annee &&
-                    albumGauche.Artiste == albumDroite.Artiste && albumGauche.Image == albumDroite.Image)
+                    albumGauche.Artiste == albumDroite.Artiste)
             {
                 return true;
             }
