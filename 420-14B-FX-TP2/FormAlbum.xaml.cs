@@ -95,6 +95,15 @@ namespace TP2_420_14B_FX
                         txtTitre.Text = pAlbum.Titre;
                         txtAnnee.Text = pAlbum.Annee.ToString();
                         txtArtiste.Text = pAlbum.Artiste;
+
+                        BitmapImage biImageAlbum = new BitmapImage();
+                        biImageAlbum.BeginInit();
+                        biImageAlbum.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                        biImageAlbum.UriSource = new Uri(CHEMIN_IMAGES_ALBUMS + pAlbum.Image);
+                        biImageAlbum.CacheOption = BitmapCacheOption.OnLoad;
+                        biImageAlbum.EndInit();
+
+                        imgAlbum.Source = biImageAlbum;
                     }
                     break;
                 
@@ -172,7 +181,21 @@ namespace TP2_420_14B_FX
                         pAlbum.Titre = txtTitre.Text;
                         pAlbum.Annee = ushort.Parse(txtAnnee.Text);
                         pAlbum.Artiste = txtArtiste.Text;
-                        
+
+                        BitmapImage biImageAlbum = imgAlbum.Source as BitmapImage;
+
+                        string cheminImage = biImageAlbum.UriSource.LocalPath;
+
+                        if (cheminImage != CHEMIN_IMAGES_ALBUMS + pAlbum.Image)
+                        {
+                            string ext = Path.GetExtension(cheminImage);
+                            string image = Path.GetFileNameWithoutExtension(pAlbum.Image);
+                            image += ext;
+
+                            File.Copy(cheminImage, CHEMIN_IMAGES_ALBUMS + image, true);
+
+                            pAlbum.Image = image;
+                        }
 
                         DialogResult = true;
                     }

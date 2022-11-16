@@ -335,6 +335,7 @@ namespace TP2_420_14B_FX
         {
             //Implémenter la méthode InitialiserDetailsAlbums
             InitialiserLecteurMusique();
+            lstChansons.Items.Clear();
             lblTitreAlbum.Content = "";
             lblAnnee.Content = "";
             lblArtistes.Content = "";
@@ -395,11 +396,18 @@ namespace TP2_420_14B_FX
                 lblAnnee.Content = selectAlbum.Annee;
                 lblArtistes.Content = selectAlbum.Artiste;
                 lblDureeAlbum.Content = selectAlbum.Duree;
-                imgAlbum.Source = new BitmapImage(new Uri(GestionMusique.CHEMIN_IMAGES_ALBUMS+"\\"+selectAlbum.Image));
+
+                BitmapImage biImageAlbum = new BitmapImage();
+                biImageAlbum.BeginInit();
+                biImageAlbum.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                biImageAlbum.UriSource = new Uri(GestionMusique.CHEMIN_IMAGES_ALBUMS + "\\" + selectAlbum.Image);
+                biImageAlbum.CacheOption = BitmapCacheOption.OnLoad;
+                biImageAlbum.EndInit();
+
+                imgAlbum.Source = biImageAlbum;
+
                 AfficherListeChansons();
             }
-            
-            //throw new NotImplementedException();
 
         }
 
@@ -435,9 +443,7 @@ namespace TP2_420_14B_FX
         private void ModifierAlbum()
         {
             //Implémenter la méthode ModifierAlbum
-            if (lstAlbums.SelectedItem is null)
-                MessageBox.Show("Vous devez sélectionner un album");
-            else
+            if (lstAlbums.SelectedItem != null)
             {
                 Album albumSelected = lstAlbums.SelectedItem as Album;
 
@@ -445,12 +451,18 @@ namespace TP2_420_14B_FX
 
                 if ((bool)frmAlbum.ShowDialog())
                 {
+                    _gestionMusique.EnregistrerChansons();
+                    _gestionMusique.EnregisterAlbum();
                     AfficherListeAlbums();
+                    InitialiserDetailsAlbums();
 
                     MessageBox.Show($"L'album {albumSelected} a bien été modifié.",
                         "Modification d'un album", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-
+            }
+            else
+            {
+                MessageBox.Show("Vous devez sélectionner un album à modifier", "Modifier un Album", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -464,7 +476,28 @@ namespace TP2_420_14B_FX
         private void SupprimerAlbum()
         {
             //Implémenter la méthode SupprimerAlbum
-            
+            if(lstAlbums.SelectedItem != null && MessageBox.Show("Voulez-vous vraiment supprimer cet album?", 
+                "Supprimer Album", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes) == MessageBoxResult.Yes)
+            {
+                Album albumSelected = lstAlbums.SelectedItem as Album; 
+
+                foreach(Chanson chanson in lstChansons.Items)
+                {
+                    File.Delete(GestionMusique.CHEMIN_DOSSIER_MP3 + "\\" + chanson.Fichier);
+                    albumSelected.SupprimerChanson(chanson);
+                }
+                File.Delete(GestionMusique.CHEMIN_IMAGES_ALBUMS + "\\" + albumSelected.Image);
+                _gestionMusique.SupprimerAlbum(albumSelected);
+                _gestionMusique.EnregisterAlbum();
+                AfficherListeAlbums();
+                InitialiserDetailsAlbums();
+                MessageBox.Show("La suppression de l'album s'est effectué avec succès", "Suppression Album",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Vous devez sélectionner un album à supprimer", "Supprimer un Album", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         /// <summary>
