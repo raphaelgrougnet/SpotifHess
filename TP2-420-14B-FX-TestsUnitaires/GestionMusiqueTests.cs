@@ -26,7 +26,7 @@ namespace TP2_420_14B_FX_TestsUnitaires
             uint resultatAttendu = 3;
 
             //Assert
-            Assert.Equal(resultatAttendu, gestionMusique.NbAlbums);
+            Assert.Equal((int)resultatAttendu, (int)gestionMusique.NbAlbums);
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace TP2_420_14B_FX_TestsUnitaires
             uint resultatAttendu = 3;
 
             //Assert
-            Assert.Equal(resultatAttendu, gestionMusique.NbAlbums);
+            Assert.Equal((uint)resultatAttendu, (uint)gestionMusique.NbAlbums);
 
         }
         
@@ -106,7 +106,7 @@ namespace TP2_420_14B_FX_TestsUnitaires
         {
             //Arrange 
             GestionMusique gestionMusique = new GestionMusique();
-            Album album = new Album(Guid.Parse("17ff4676-bfb4-47c0-96b4-e84092baeb4e"),"Divide", 2017, "Ed Sheeran", "17ff4676-bfb4-47c0-96b4-e84092baeb4e.png");
+            Album album = new Album(false, Guid.Parse("17ff4676-bfb4-47c0-96b4-e84092baeb4e"),"Divide", 2017, "17ff4676-bfb4-47c0-96b4-e84092baeb4e.png" ,"Ed Sheeran");
 
 
             //Act
@@ -149,7 +149,7 @@ namespace TP2_420_14B_FX_TestsUnitaires
         {
             //Arrange 
             GestionMusique gestionMusique = new GestionMusique();
-            Album album = new Album(Guid.Parse("17ff4676-bfb4-47c0-96b4-e84092baeb4e"), "Divide", 2017, "Ed Sheeran", "17ff4676-bfb4-47c0-96b4-e84092baeb4e.png");
+            Album album = new Album(false, Guid.Parse("17ff4676-bfb4-47c0-96b4-e84092baeb4e"), "Divide", 2017, "17ff4676-bfb4-47c0-96b4-e84092baeb4e.png", "Ed Sheeran");
 
 
             //Act & Assert
@@ -163,14 +163,14 @@ namespace TP2_420_14B_FX_TestsUnitaires
             //Arrange 
             GestionMusique gestionMusique = new GestionMusique();
             Album album = CreerAlbum();
-            uint resultatAttendu = gestionMusique.NbAlbums + 1;
+            uint resultatAttendu = (uint)gestionMusique.NbAlbums + 1;
 
             //Act
             gestionMusique.AjouterAlbum(album);
 
 
             //Assert
-            Assert.Equal(resultatAttendu, gestionMusique.NbAlbums);
+            Assert.Equal((uint)resultatAttendu, (uint)gestionMusique.NbAlbums);
 
 
         }
@@ -228,7 +228,7 @@ namespace TP2_420_14B_FX_TestsUnitaires
 
             //Arrange 
             GestionMusique gestionMusique = new GestionMusique();
-            Album album = new Album(Guid.Parse("17ff4676-bfb4-47c0-96b4-e84092baeb4e"), "Divide", 2017, "Ed Sheeran", "17ff4676-bfb4-47c0-96b4-e84092baeb4e.png");
+            Album album = new Album(false, Guid.Parse("17ff4676-bfb4-47c0-96b4-e84092baeb4e"), "Divide", 2017, "17ff4676-bfb4-47c0-96b4-e84092baeb4e.png", "Ed Sheeran");
             uint resultatAttendu = gestionMusique.NbAlbums - 1;
 
             //Act 
@@ -246,7 +246,7 @@ namespace TP2_420_14B_FX_TestsUnitaires
 
             //Arrange 
             GestionMusique gestionMusique = new GestionMusique();
-            Album album = new Album(Guid.Parse("17ff4676-bfb4-47c0-96b4-e84092baeb4e"), "Divide", 2017, "Ed Sheeran", "17ff4676-bfb4-47c0-96b4-e84092baeb4e.png");
+            Album album = new Album(false, Guid.Parse("17ff4676-bfb4-47c0-96b4-e84092baeb4e"), "Divide", 2017, "17ff4676-bfb4-47c0-96b4-e84092baeb4e.png", "Ed Sheeran");
            
 
             //Act 

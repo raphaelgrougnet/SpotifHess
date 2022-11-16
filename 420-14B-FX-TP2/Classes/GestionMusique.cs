@@ -33,9 +33,9 @@ namespace TP2_420_14B_FX.Classes
             set { _albums = value; }
         }
 
-        public int NbAlbums
+        public uint NbAlbums
         {
-            get { return Albums.Count; }
+            get { return (uint)Albums.Count; }
         }
         #endregion
 
@@ -155,7 +155,7 @@ namespace TP2_420_14B_FX.Classes
         /// <summary>
         /// Enregistre les albums dans le fichier albums.csv
         /// </summary>
-        public void EnregisterAlbum()
+        public void EnregistrerAlbums()
         {
             string enregistrerAlbum = "";
 

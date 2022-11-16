@@ -425,7 +425,7 @@ namespace TP2_420_14B_FX
 
                 _gestionMusique.AjouterAlbum(nouvAlbum);
 
-                _gestionMusique.EnregisterAlbum();
+                _gestionMusique.EnregistrerAlbums();
                 
                 AfficherListeAlbums();
 
@@ -452,7 +452,7 @@ namespace TP2_420_14B_FX
                 if ((bool)frmAlbum.ShowDialog())
                 {
                     _gestionMusique.EnregistrerChansons();
-                    _gestionMusique.EnregisterAlbum();
+                    _gestionMusique.EnregistrerAlbums();
                     AfficherListeAlbums();
                     InitialiserDetailsAlbums();
 
@@ -489,7 +489,7 @@ namespace TP2_420_14B_FX
                 File.Delete(GestionMusique.CHEMIN_IMAGES_ALBUMS + "\\" + albumSelected.Image);
                 _gestionMusique.SupprimerAlbum(albumSelected);
                 _gestionMusique.EnregistrerChansons();
-                _gestionMusique.EnregisterAlbum();
+                _gestionMusique.EnregistrerAlbums();
                 AfficherListeAlbums();
                 InitialiserDetailsAlbums();
                 MessageBox.Show("La suppression de l'album s'est effectué avec succès", "Suppression Album",

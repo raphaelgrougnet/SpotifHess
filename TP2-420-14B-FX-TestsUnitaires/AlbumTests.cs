@@ -12,7 +12,7 @@ namespace TP2_420_14B_FX_TestsUnitaires
             Guid id = Guid.NewGuid();
 
           
-            return new Album(id, "Un album", 2022, "Un artiste", id + ".jpg");
+            return new Album(false, id, "Un album", 2022, id + ".jpg", "Un artiste");
 
             
         }
@@ -32,7 +32,7 @@ namespace TP2_420_14B_FX_TestsUnitaires
             Guid id = new Guid();
             
             //Act and Assert
-            Assert.Throws<ArgumentNullException>(() => new Album(id,"Un album",2022,"un artiste","image.jpg"));
+            Assert.Throws<ArgumentNullException>(() => new Album(false, id, "Un album", 2022, id + ".jpg", "Un artiste");
         }
 
         [Fact]
@@ -249,7 +249,7 @@ namespace TP2_420_14B_FX_TestsUnitaires
             byte position = 0;
 
             //Act
-            Album album = new Album(id, titre, annee, artiste, image);
+            Album album = new Album(aleatoire, id, titre, annee, image, artiste);
 
             //Assert
             Assert.Equal(id, album.Id);
