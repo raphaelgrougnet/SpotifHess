@@ -5,6 +5,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>TP2_420_14B_FX</RootNamespace>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Spotifesse3.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
