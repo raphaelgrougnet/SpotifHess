@@ -479,7 +479,7 @@ namespace TP2_420_14B_FX
             if(lstAlbums.SelectedItem != null && MessageBox.Show("Voulez-vous vraiment supprimer cet album?", 
                 "Supprimer Album", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes) == MessageBoxResult.Yes)
             {
-                Album albumSelected = lstAlbums.SelectedItem as Album; 
+                Album albumSelected = lstAlbums.SelectedItem as Album;
 
                 foreach(Chanson chanson in lstChansons.Items)
                 {
