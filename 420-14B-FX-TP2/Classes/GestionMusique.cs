@@ -33,9 +33,9 @@ namespace TP2_420_14B_FX.Classes
             set { _albums = value; }
         }
 
-        public int NbAlbums
+        public uint NbAlbums
         {
-            get { return Albums.Count; }
+            get { return (uint)Albums.Count; }
         }
         #endregion
 
@@ -155,7 +155,7 @@ namespace TP2_420_14B_FX.Classes
         /// <summary>
         /// Enregistre les albums dans le fichier albums.csv
         /// </summary>
-        public void EnregisterAlbum()
+        public void EnregistrerAlbums()
         {
             string enregistrerAlbum = "";
 
@@ -232,7 +232,7 @@ namespace TP2_420_14B_FX.Classes
             }
 
             if (pAlbum is null)
-                throw new ArgumentNullException("Album", "Un album ne peut pas être null");
+                throw new ArgumentNullException("Album", "Un album ne peut pas être nul");
 
             return false;
         }
@@ -245,7 +245,7 @@ namespace TP2_420_14B_FX.Classes
         public bool SupprimerAlbum(Album album)
         {
             if (album is null)
-                throw new ArgumentNullException("Album", "L'album a supprimé ne peut pas être null");
+                throw new ArgumentNullException("Album", "L'album a supprimer ne peut pas être nul");
             foreach(Album pAlbum in Albums)
             {
                 if(pAlbum == album)
