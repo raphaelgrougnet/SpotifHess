@@ -32,7 +32,11 @@ namespace TP2_420_14B_FX
         
         
             
-
+        /// <summary>
+        /// Constructeur du formulaire FormChanson, permet d'initialiser son état et de lui passer ou non une chanson a modifier
+        /// </summary>
+        /// <param name="chanson">Une chanson a modifier</param>
+        /// <param name="etat">L'état du formualaire, Modification ou Ajout</param>
         public FormChanson( Chanson chanson = null, EtatChanson etat = EtatChanson.Modifier)
         {
             InitializeComponent();
@@ -77,6 +81,11 @@ namespace TP2_420_14B_FX
 
         }
 
+        /// <summary>
+        /// Evenement executé lors du clic sur le boutton Parcourir. Permet de soummettre un fichier musical au formulaire.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnParcourir_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -102,6 +111,12 @@ namespace TP2_420_14B_FX
             
         }
 
+        /// <summary>
+        /// Evenement executé lors du clic sur le boutton Ajouter ou Modifier selon l'état du formulaire. 
+        /// Permet d'enregistrer les modification apporté a la musique ou d'ajouter la nouvelle musique
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAjouterModifier_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -162,6 +177,11 @@ namespace TP2_420_14B_FX
 
         }
 
+        /// <summary>
+        /// Evenement executé lors du clic sur le boutton Annuler. D'annuler toutes les modifications ou ajouts potentiels.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Voulez-vous vraiment annuler?", "Annuler", MessageBoxButton.YesNo,
@@ -171,6 +191,10 @@ namespace TP2_420_14B_FX
             }
         }
 
+        /// <summary>
+        /// Permet de valider si les paramètre de la chanson rentré dans le formulaire sont corrects, si non, un message s'affiche a l'utilisateur
+        /// </summary>
+        /// <returns></returns>
         private bool ValiderChanson()
         {
             string message = "";
