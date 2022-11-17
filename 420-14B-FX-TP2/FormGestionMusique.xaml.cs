@@ -60,6 +60,9 @@ namespace TP2_420_14B_FX
 
         #region CONSTRUCTEURS
 
+        /// <summary>
+        /// Constructeur du formulaire principal, permet d'initialiser toutes les instances au lancement de l'application
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
