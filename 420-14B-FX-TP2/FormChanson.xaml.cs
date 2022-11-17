@@ -106,15 +106,15 @@ namespace TP2_420_14B_FX
             }
             catch (FileNotFoundException fnfe)
             {
-                MessageBox.Show($"Le fichier que vous essayez d'insérer n'est pas trouvable {fnfe.Message}");
+                MessageBox.Show($"Le fichier que vous essayez d'insérer n'est pas trouvable. {fnfe.Message}");
             }
             catch (SystemException se)
             {
-                MessageBox.Show($"Une erreur s'est produite dans le système {se.Message}");
+                MessageBox.Show($"Une erreur s'est produite dans le système. {se.Message}");
             }
             catch (Exception exceptionOpenFileDialogue)
             {
-                MessageBox.Show($"Une erreur s'est survenue lors de la sélection d'une chanson {exceptionOpenFileDialogue.Message}");
+                MessageBox.Show($"Une erreur s'est survenue lors de la sélection d'une chanson. {exceptionOpenFileDialogue.Message}");
             }
 
         }
