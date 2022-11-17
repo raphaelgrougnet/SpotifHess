@@ -220,7 +220,7 @@ namespace TP2_420_14B_FX.Classes
                     return Albums[i];
             }
 
-            throw new IndexOutOfRangeException($"Il n'y a aucun album associé avec cette index, l'index est plus que {NbAlbums}");
+            throw new IndexOutOfRangeException($"Il n'y a aucun album associé avec cette index, l'index est plus grand que {NbAlbums}");
         }
 
         /// <summary>
@@ -230,15 +230,14 @@ namespace TP2_420_14B_FX.Classes
         /// <returns>Retourne vrai s'il existe sinon retourne faux</returns>
         public bool AlbumExiste(Album pAlbum)
         {
-            foreach (Album album in Albums)
-            {
-                if (album == pAlbum)
-                    return true;
-            }
-
             if (pAlbum is null)
                 throw new ArgumentNullException("Un album ne peut pas être nul");
 
+            foreach (Album album in Albums)
+            {
+                if (pAlbum == album)
+                    return true;
+            }
             return false;
         }
 

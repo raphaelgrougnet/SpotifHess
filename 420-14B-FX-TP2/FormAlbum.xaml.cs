@@ -204,21 +204,21 @@ namespace TP2_420_14B_FX
                         break;
                 }
             }
-            catch(ArgumentNullException estNull)
+            catch(ArgumentNullException albumEstNull)
             {
-                MessageBox.Show($"Une erreur s'est produite. {estNull.Message}");
+                MessageBox.Show($"Une erreur s'est produite. {albumEstNull.Message}");
             }
-            catch(IndexOutOfRangeException indexOutOfRange)
+            catch(IndexOutOfRangeException nbrAlbumOutOfRange)
             {
-                MessageBox.Show($"Une erreur s'est produite. {indexOutOfRange.Message}");
+                MessageBox.Show($"Une erreur s'est produite. {nbrAlbumOutOfRange.Message}");
             }
-            catch(ArgumentException argument)
+            catch(InvalidOperationException albumOperationExecption)
             {
-                MessageBox.Show($"Une erreur s'est produite. {argument.Message}");
+                MessageBox.Show($"Une erreur s'est produite. {albumOperationExecption.Message}");
             }
-            catch(Exception excep)
+            catch(Exception exceptionAlbum)
             {
-                MessageBox.Show($"Une erreur s'est produite. {excep.Message}");
+                MessageBox.Show($"Une erreur s'est produite. {exceptionAlbum.Message}");
             }
         }
             
