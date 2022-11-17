@@ -212,9 +212,9 @@ namespace TP2_420_14B_FX
             {
                 MessageBox.Show($"Une erreur s'est produite. {nbrAlbumOutOfRange.Message}");
             }
-            catch(ArgumentException argumentAlbums)
+            catch(InvalidOperationException albumOperationExecption)
             {
-                MessageBox.Show($"Une erreur s'est produite. {argumentAlbums.Message}");
+                MessageBox.Show($"Une erreur s'est produite. {albumOperationExecption.Message}");
             }
             catch(Exception exceptionAlbum)
             {
