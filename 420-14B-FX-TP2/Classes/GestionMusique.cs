@@ -178,7 +178,7 @@ namespace TP2_420_14B_FX.Classes
             if (AlbumExiste(album))
                 throw new Exception("L'album existe déjà");
             else if (album is null)
-                throw new ArgumentNullException("Album", "Un album ne peut pas être null");
+                throw new ArgumentNullException("Un album ne peut pas être null");
             else
                 Albums.Add(album);
         }
@@ -232,7 +232,7 @@ namespace TP2_420_14B_FX.Classes
             }
 
             if (pAlbum is null)
-                throw new ArgumentNullException("Album", "Un album ne peut pas être nul");
+                throw new ArgumentNullException("Un album ne peut pas être nul");
 
             return false;
         }
@@ -245,7 +245,7 @@ namespace TP2_420_14B_FX.Classes
         public bool SupprimerAlbum(Album album)
         {
             if (album is null)
-                throw new ArgumentNullException("Album", "L'album a supprimer ne peut pas être nul");
+                throw new ArgumentNullException("L'album a supprimer ne peut pas être nul");
             foreach(Album pAlbum in Albums)
             {
                 if(pAlbum == album)

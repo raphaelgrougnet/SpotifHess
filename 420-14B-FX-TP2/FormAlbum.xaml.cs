@@ -202,13 +202,23 @@ namespace TP2_420_14B_FX
                             DialogResult = true;
                         }
                         break;
-                    default:
-                        break;
                 }
             }
-            catch 
+            catch(ArgumentNullException estNull)
             {
-
+                MessageBox.Show($"Une erreur s'est produite. {estNull.Message}");
+            }
+            catch(IndexOutOfRangeException indexOutOfRange)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {indexOutOfRange.Message}");
+            }
+            catch(ArgumentException argument)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {argument.Message}");
+            }
+            catch(Exception excep)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {excep.Message}");
             }
         }
             
