@@ -305,42 +305,10 @@ namespace TP2_420_14B_FX.Classes
                 return false;
             }
             throw new ArgumentException("La chanson ne peut pas être nulle", "Chanson");
-            
-            //try
-            //{
-            //    if (_chansons.Equals(pChanson))
-            //        return true;
-            //}
-            //catch(ArgumentNullException estNull)
-            //{
-            //    throw estNull;
-            //}
-            
-            //return false;
 
         }
 
-        //public Chanson ObtenirChanson(byte index)
-        //{
-        //    try
-        //    {
-        //        _position = index;
-        //        int i = 0;
-
-        //        foreach (Chanson pChanson in _chansons)
-        //        {
-        //            if (i == _position)
-        //            {
-        //                return pChanson;
-        //            }
-        //        }
-        //    }
-        //    catch(IndexOutOfRangeException outOfRange)
-        //    {
-        //        throw outOfRange;
-        //    }
-            
-        //}
+       
 
         
 

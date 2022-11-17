@@ -149,61 +149,69 @@ namespace TP2_420_14B_FX
         /// <param name="e">Event</param>
         private void btnAjouterModifier_Click(object sender, RoutedEventArgs e)
         {
-            switch (_etat)
+            try
             {
-                case EtatAlbum.Ajouter:
+                switch (_etat)
+                {
+                    case EtatAlbum.Ajouter:
 
-                    if (ValidationAlbum())
-                    {
-                        string titre = txtTitre.Text;
-                        ushort annee = ushort.Parse(txtAnnee.Text);
-                        string artistes = txtArtiste.Text;
-
-                        BitmapImage imgAl = imgAlbum.Source as BitmapImage;
-                        string cheminFichier = imgAl.UriSource.LocalPath;
-                        string image = Path.GetFileName(cheminFichier);
-
-                        string ext = Path.GetExtension(image);
-                        image = Guid.NewGuid() + ext;
-                        File.Copy(cheminFichier, CHEMIN_IMAGES_ALBUMS + image, true);
-
-
-                        pAlbum = new Album(false, Guid.NewGuid(), titre, annee, image, artistes);
-
-                        DialogResult = true;
-                        
-                    }
-                    break;
-                case EtatAlbum.Modifier:
-
-                    if (ValidationAlbum())
-                    {
-                        pAlbum.Titre = txtTitre.Text;
-                        pAlbum.Annee = ushort.Parse(txtAnnee.Text);
-                        pAlbum.Artiste = txtArtiste.Text;
-
-                        BitmapImage biImageAlbum = imgAlbum.Source as BitmapImage;
-
-                        string cheminImage = biImageAlbum.UriSource.LocalPath;
-
-                        if (cheminImage != CHEMIN_IMAGES_ALBUMS + pAlbum.Image)
+                        if (ValidationAlbum())
                         {
-                            string ext = Path.GetExtension(cheminImage);
-                            string image = Path.GetFileNameWithoutExtension(pAlbum.Image);
-                            image += ext;
+                            string titre = txtTitre.Text;
+                            ushort annee = ushort.Parse(txtAnnee.Text);
+                            string artistes = txtArtiste.Text;
 
-                            File.Copy(cheminImage, CHEMIN_IMAGES_ALBUMS + image, true);
+                            BitmapImage imgAl = imgAlbum.Source as BitmapImage;
+                            string cheminFichier = imgAl.UriSource.LocalPath;
+                            string image = Path.GetFileName(cheminFichier);
 
-                            pAlbum.Image = image;
+                            string ext = Path.GetExtension(image);
+                            image = Guid.NewGuid() + ext;
+                            File.Copy(cheminFichier, CHEMIN_IMAGES_ALBUMS + image, true);
+
+
+                            pAlbum = new Album(false, Guid.NewGuid(), titre, annee, image, artistes);
+
+                            DialogResult = true;
+
                         }
+                        break;
+                    case EtatAlbum.Modifier:
 
-                        DialogResult = true;
-                    }
-                    break;
-                default:
-                    break;
+                        if (ValidationAlbum())
+                        {
+                            pAlbum.Titre = txtTitre.Text;
+                            pAlbum.Annee = ushort.Parse(txtAnnee.Text);
+                            pAlbum.Artiste = txtArtiste.Text;
+
+                            BitmapImage biImageAlbum = imgAlbum.Source as BitmapImage;
+
+                            string cheminImage = biImageAlbum.UriSource.LocalPath;
+
+                            if (cheminImage != CHEMIN_IMAGES_ALBUMS + pAlbum.Image)
+                            {
+                                string ext = Path.GetExtension(cheminImage);
+                                string image = Path.GetFileNameWithoutExtension(pAlbum.Image);
+                                image += ext;
+
+                                File.Copy(cheminImage, CHEMIN_IMAGES_ALBUMS + image, true);
+
+                                pAlbum.Image = image;
+                            }
+
+                            DialogResult = true;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch 
+            {
+
             }
         }
+            
 
         /// <summary>
         /// Bouton qui permet l'utilisateur de parcourir ses dossiers pour une images pour son album
