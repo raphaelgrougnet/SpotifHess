@@ -176,11 +176,16 @@ namespace TP2_420_14B_FX.Classes
         public void AjouterAlbum(Album album)
         {
             if (AlbumExiste(album))
-                throw new Exception("L'album existe déjà");
+                throw new InvalidOperationException("L'album existe déjà");
             else if (album is null)
                 throw new ArgumentNullException("Un album ne peut pas être null");
             else
+            {
                 Albums.Add(album);
+                
+            }
+            TrierAlbums();
+
         }
 
         /// <summary>

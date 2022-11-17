@@ -228,7 +228,32 @@ namespace TP2_420_14B_FX
         /// <param name="e"></param>
         private void lstAlbums_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            AfficherDetailsAlbum();
+            try
+            {
+                AfficherDetailsAlbum();
+            }
+            catch (ArgumentNullException ane)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ane.Message}");
+            }
+            catch (IndexOutOfRangeException ioore)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioore.Message}");
+            }
+            catch (ArgumentException ae)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ae.Message}");
+            }
+            catch (InvalidOperationException ioe)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioe.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ex.Message}");
+            }
+            
+            
         }
 
         /// <summary>
@@ -238,7 +263,32 @@ namespace TP2_420_14B_FX
         /// <param name="e"></param>
         private void imgAjouterAlbum_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            AjouterAlbum();
+            
+            try
+            {
+                AjouterAlbum();
+            }
+            catch (ArgumentNullException ane)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ane.Message}");
+            }
+            catch (IndexOutOfRangeException ioore)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioore.Message}");
+            }
+            catch (ArgumentException ae)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ae.Message}");
+            }
+            catch (InvalidOperationException ioe)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioe.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ex.Message}");
+            }
+            
         }
 
         /// <summary>
@@ -248,7 +298,31 @@ namespace TP2_420_14B_FX
         /// <param name="e"></param>
         private void imgModifierAlbum_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ModifierAlbum();
+            try
+            {
+                ModifierAlbum();
+            }
+            catch (ArgumentNullException ane)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ane.Message}");
+            }
+            catch (IndexOutOfRangeException ioore)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioore.Message}");
+            }
+            catch (ArgumentException ae)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ae.Message}");
+            }
+            catch (InvalidOperationException ioe)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioe.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ex.Message}");
+            }
+            
         }
 
         /// <summary>
@@ -258,7 +332,31 @@ namespace TP2_420_14B_FX
         /// <param name="e"></param>
         private void imgSupprimerAlbum_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            SupprimerAlbum();
+            try
+            {
+                SupprimerAlbum();
+            }
+            catch (ArgumentNullException ane)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ane.Message}");
+            }
+            catch (IndexOutOfRangeException ioore)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioore.Message}");
+            }
+            catch (ArgumentException ae)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ae.Message}");
+            }
+            catch (InvalidOperationException ioe)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioe.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ex.Message}");
+            }
+            
         }
         #endregion
 
@@ -270,10 +368,34 @@ namespace TP2_420_14B_FX
         /// <param name="e"></param>
         private void lstChansons_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (lstChansons.SelectedIndex != -1)
+            try
             {
-                JouerChansonSelectionnee();
+                if (lstChansons.SelectedIndex != -1)
+                {
+                    JouerChansonSelectionnee();
+                }
             }
+            catch (ArgumentNullException ane)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ane.Message}");
+            }
+            catch (IndexOutOfRangeException ioore)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioore.Message}");
+            }
+            catch (ArgumentException ae)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ae.Message}");
+            }
+            catch (InvalidOperationException ioe)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioe.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ex.Message}");
+            }
+            
             
 
         }
@@ -285,7 +407,31 @@ namespace TP2_420_14B_FX
         /// <param name="e"></param>
         private void imgAjouerChanson_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            AjouterChanson();
+            try
+            {
+                AjouterChanson();
+            }
+            catch (ArgumentNullException ane)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ane.Message}");
+            }
+            catch (IndexOutOfRangeException ioore)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioore.Message}");
+            }
+            catch (ArgumentException ae)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ae.Message}");
+            }
+            catch (InvalidOperationException ioe)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioe.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ex.Message}");
+            }
+            
         }
 
         /// <summary>
@@ -295,7 +441,31 @@ namespace TP2_420_14B_FX
         /// <param name="e"></param>
         private void imgModifierChanson_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ModifierChanson();
+            
+            try
+            {
+                ModifierChanson();
+            }
+            catch (ArgumentNullException ane)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ane.Message}");
+            }
+            catch (IndexOutOfRangeException ioore)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioore.Message}");
+            }
+            catch (ArgumentException ae)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ae.Message}");
+            }
+            catch (InvalidOperationException ioe)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioe.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ex.Message}");
+            }
         }
 
         /// <summary>
@@ -305,7 +475,31 @@ namespace TP2_420_14B_FX
         /// <param name="e"></param>
         private void imgSupprimerChanson_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            SupprimerChanson();
+            try
+            {
+                SupprimerChanson();
+            }
+            catch (ArgumentNullException ane)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ane.Message}");
+            }
+            catch (IndexOutOfRangeException ioore)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioore.Message}");
+            }
+            catch (ArgumentException ae)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ae.Message}");
+            }
+            catch (InvalidOperationException ioe)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioe.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ex.Message}");
+            }
+            
         }
         #endregion
 

@@ -32,7 +32,7 @@ namespace TP2_420_14B_FX_TestsUnitaires
             Guid id = new Guid();
             
             //Act and Assert
-            Assert.Throws<ArgumentNullException>(() => new Album(false, id, "Un album", 2022, id + ".jpg", "Un artiste");
+            Assert.Throws<ArgumentNullException>(() => new Album(false, id, "Un album", 2022, id + ".jpg", "Un artiste"));
         }
 
         [Fact]

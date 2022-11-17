@@ -29,7 +29,7 @@ namespace TP2_420_14B_FX
             set { _chansonAjoutModif = value; }
         }
 
-        private bool parcourru = false;
+        
         
             
 
@@ -79,64 +79,96 @@ namespace TP2_420_14B_FX
 
         private void btnParcourir_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = "Choisir une chanson";
-            openFileDialog.Filter = "Fichier mp3 (*.mp3)|*.mp3";
-
-            if ((bool)openFileDialog.ShowDialog())
+            try
             {
-                
-                string fichier = openFileDialog.FileName;
-                _mediaPlayer.Open(new Uri(fichier));
-                lblFichier.Content = fichier;
-                parcourru = true;
-                
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Title = "Choisir une chanson";
+                openFileDialog.Filter = "Fichier mp3 (*.mp3)|*.mp3";
+
+                if ((bool)openFileDialog.ShowDialog())
+                {
+
+                    string fichier = openFileDialog.FileName;
+                    _mediaPlayer.Open(new Uri(fichier));
+                    lblFichier.Content = fichier;
+
+
+                }
             }
+            catch (Exception exp)
+            {
+                MessageBox.Show($"Une erreur est survenue. {exp.Message}");
+            }
+            
         }
 
         private void btnAjouterModifier_Click(object sender, RoutedEventArgs e)
         {
-            if (ChansonAjoutModif == null)
+            try
             {
-                
-                if (ValiderChanson())
+                if (ChansonAjoutModif == null)
                 {
-                    Guid guid = Guid.NewGuid();
-                    string titre = txtTitre.Text.Trim();
-                    StyleMusical style = (StyleMusical)cboStyle.SelectedItem;
-                    TimeSpan duree = TimeSpan.Parse((string)lblDuree.Content);
-                    string fichier = guid + ".mp3";
-                    ChansonAjoutModif = new Chanson(guid, titre, style, duree, fichier);
-                    
-                }
-                
-            }
-            else
-            {
-                
 
-                if (ValiderChanson())
-                {
-                    
-                    string titre = txtTitre.Text.Trim();
-                    StyleMusical style = (StyleMusical)cboStyle.SelectedItem;
-                    TimeSpan duree = TimeSpan.Parse((string)lblDuree.Content);
-                    
-                    ChansonAjoutModif.Titre = titre;
-                    ChansonAjoutModif.Style = style;
-                    ChansonAjoutModif.Duree = duree;
-                    
-                    
-                    
+                    if (ValiderChanson())
+                    {
+                        Guid guid = Guid.NewGuid();
+                        string titre = txtTitre.Text.Trim();
+                        StyleMusical style = (StyleMusical)cboStyle.SelectedItem;
+                        TimeSpan duree = TimeSpan.Parse((string)lblDuree.Content);
+                        string fichier = guid + ".mp3";
+                        ChansonAjoutModif = new Chanson(guid, titre, style, duree, fichier);
+
+                    }
+
                 }
+                else
+                {
+
+
+                    if (ValiderChanson())
+                    {
+
+                        string titre = txtTitre.Text.Trim();
+                        StyleMusical style = (StyleMusical)cboStyle.SelectedItem;
+                        TimeSpan duree = TimeSpan.Parse((string)lblDuree.Content);
+
+                        ChansonAjoutModif.Titre = titre;
+                        ChansonAjoutModif.Style = style;
+                        ChansonAjoutModif.Duree = duree;
+
+
+
+                    }
+                }
+
+                DialogResult = true;
             }
-            
-            DialogResult = true;
+            catch (ArgumentNullException ane)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ane.Message}");
+            }
+            catch (IndexOutOfRangeException ioore)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioore.Message}");
+            }
+            catch (ArgumentException ae)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ae.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ex.Message}");
+            }
+
         }
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = false;
+            if (MessageBox.Show("Voulez-vous vraiment annuler?", "Annuler", MessageBoxButton.YesNo,
+                MessageBoxImage.Question, MessageBoxResult.Yes) == MessageBoxResult.Yes)
+            {
+                DialogResult = false;
+            }
         }
 
         private bool ValiderChanson()
