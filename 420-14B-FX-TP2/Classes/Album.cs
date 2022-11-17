@@ -120,7 +120,7 @@ namespace TP2_420_14B_FX.Classes
             get { return _titre; }
             set
             {
-                if (!String.IsNullOrWhiteSpace(value.Trim()))
+                if (!String.IsNullOrWhiteSpace(value))
                 {
                     _titre = value.Trim();
                 }
@@ -161,7 +161,7 @@ namespace TP2_420_14B_FX.Classes
             get { return _image; }
             set
             {
-                if (!String.IsNullOrWhiteSpace(value.Trim()))
+                if (!String.IsNullOrWhiteSpace(value))
                 {
                     _image = value.Trim();
                 }
@@ -181,7 +181,7 @@ namespace TP2_420_14B_FX.Classes
             get { return _artiste; }
             set
             {
-                if (!String.IsNullOrWhiteSpace(value.Trim()))
+                if (!String.IsNullOrWhiteSpace(value))
                 {
                     _artiste = value.Trim();
                 }
@@ -258,7 +258,7 @@ namespace TP2_420_14B_FX.Classes
         public Chanson ObtenirChanson(byte index)
         {
 
-            if (index > NbChansons)
+            if (index >= NbChansons)
             {
                 throw new IndexOutOfRangeException("L'index dépasse le nombre de chansons");
             }
@@ -277,16 +277,20 @@ namespace TP2_420_14B_FX.Classes
         /// <returns>Si la chanson jouée est la dernière et que le mode aléatoire est désactivé, retourne la première chanson, sinon la chanson suivante</returns>
         public Chanson ObtenirChansonSuivante()
         {
-
-            if (!Aleatoire)
+            if (NbChansons > 0)
             {
-                if (Position == NbChansons - 1)
+                if (!Aleatoire)
                 {
-                    return ObtenirChanson(0);
+                    if (Position == NbChansons - 1)
+                    {
+                        return ObtenirChanson(0);
+                    }
+                    return ObtenirChanson((byte)(Position + 1));
                 }
-                return ObtenirChanson((byte)(Position + 1));
+                return ObtenirChanson(ObtenirPositionAleatoire());
             }
-            return ObtenirChanson(ObtenirPositionAleatoire());
+            return null;
+            
         }
 
         /// <summary>
@@ -321,15 +325,20 @@ namespace TP2_420_14B_FX.Classes
         /// <returns>Si la chanson jouée est la première et que le mode aléatoire est désactivé, retourne la première chanson, sinon la chanson suivante</returns>
         public Chanson ObtenirChansonPrecedente()
         {
-            if (!Aleatoire)
+            if (NbChansons > 0)
             {
-                if (Position == 0)
+                if (!Aleatoire)
                 {
-                    return ObtenirChanson(0);
+                    if (Position == 0)
+                    {
+                        return ObtenirChanson(0);
+                    }
+                    return ObtenirChanson((byte)(Position - 1));
                 }
-                return ObtenirChanson((byte)(Position - 1));
+                return ObtenirChanson(ObtenirPositionAleatoire());
             }
-            return ObtenirChanson(ObtenirPositionAleatoire());
+            return null;
+            
         }
 
         /// <summary>
@@ -362,12 +371,13 @@ namespace TP2_420_14B_FX.Classes
         /// <param name="pChanson">Un chanson</param>
         public void AjouterChanson(Chanson pChanson)
         {
+            if (pChanson is null)
+                throw new ArgumentNullException("La chanson est nulle");
             if (ChansonExiste(pChanson))
-                throw new Exception("La chanson existe déjà dans l'album");
-            else if (pChanson is null)
-                throw new ArgumentNullException("La chanson est null");
+                throw new InvalidOperationException("La chanson existe déjà dans l'album");
+            
             else
-            _chansons.Add(pChanson);
+                _chansons.Add(pChanson);
             
         }
 
@@ -380,7 +390,7 @@ namespace TP2_420_14B_FX.Classes
         {
             if(pChanson is null)
             {
-                throw new ArgumentNullException("La chanson est null");
+                throw new ArgumentNullException("La chanson est nulle");
             }
             else if (ChansonExiste(pChanson))
             {
