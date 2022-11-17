@@ -152,10 +152,7 @@ namespace TP2_420_14B_FX
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show()
-            {
-
-            }
+            MessageBox.Show("Voulez-vous vraiment annuler ?");
             DialogResult = false;
         }
 
