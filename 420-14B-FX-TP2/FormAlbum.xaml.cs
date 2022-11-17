@@ -230,25 +230,41 @@ namespace TP2_420_14B_FX
         /// <param name="e">Event</param>
         private void btnParcourir_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            openFileDialog.Title = "Choisissez une image";
-            openFileDialog.Filter = "Fichier JPG (*.jpg)|*.jpg|Fichier PNG (*.png)|*.png";
-
-            if ((bool)openFileDialog.ShowDialog())
+            try
             {
-                string ficher = openFileDialog.FileName;
+                OpenFileDialog openFileDialog = new OpenFileDialog();
 
-                BitmapImage biAl = new BitmapImage();
+                openFileDialog.Title = "Choisissez une image";
+                openFileDialog.Filter = "Fichier JPG (*.jpg)|*.jpg|Fichier PNG (*.png)|*.png";
 
-                biAl.BeginInit();
-                biAl.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
-                biAl.UriSource = new Uri(ficher);
-                biAl.CacheOption = BitmapCacheOption.OnLoad;
-                biAl.EndInit();
+                if ((bool)openFileDialog.ShowDialog())
+                {
+                    string ficher = openFileDialog.FileName;
 
-                imgAlbum.Source = biAl;
+                    BitmapImage biAl = new BitmapImage();
+
+                    biAl.BeginInit();
+                    biAl.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                    biAl.UriSource = new Uri(ficher);
+                    biAl.CacheOption = BitmapCacheOption.OnLoad;
+                    biAl.EndInit();
+
+                    imgAlbum.Source = biAl;
+                }
             }
+            catch(FileNotFoundException fichierNonTrouvableImageAlbum)
+            {
+                MessageBox.Show($"Le fichier que vous essayez d'insérer n'est pas trouvable {fichierNonTrouvableImageAlbum.Message}");
+            }
+            catch (SystemException exceptionSystemAlbum)
+            {
+                MessageBox.Show($"Une erreur s'est produite dans le système {exceptionSystemAlbum.Message}");
+            }
+            catch(Exception exceptionOpenFileDialogue)
+            {
+                MessageBox.Show($"Une erreur s'est survenue lors de la sélection d'une image {exceptionOpenFileDialogue.Message}");
+            }
+            
         }
 
         #endregion
