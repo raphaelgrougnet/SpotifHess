@@ -143,17 +143,32 @@ namespace TP2_420_14B_FX
 
                 DialogResult = true;
             }
+            catch (ArgumentNullException ane)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ane.Message}");
+            }
+            catch (IndexOutOfRangeException ioore)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ioore.Message}");
+            }
             catch (ArgumentException ae)
             {
-                MessageBox.Show($"Une erreur est survenue. {ae.Message}");
+                MessageBox.Show($"Une erreur s'est produite. {ae.Message}");
             }
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Une erreur s'est produite. {ex.Message}");
+            }
+
         }
 
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Voulez-vous vraiment annuler ?");
-            DialogResult = false;
+            if (MessageBox.Show("Voulez-vous vraiment annuler?", "Annuler", MessageBoxButton.YesNo,
+                MessageBoxImage.Question, MessageBoxResult.Yes) == MessageBoxResult.Yes)
+            {
+                DialogResult = false;
+            }
         }
 
         private bool ValiderChanson()
