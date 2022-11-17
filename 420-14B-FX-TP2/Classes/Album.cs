@@ -305,42 +305,10 @@ namespace TP2_420_14B_FX.Classes
                 return false;
             }
             throw new ArgumentException("La chanson ne peut pas être nulle", "Chanson");
-            
-            //try
-            //{
-            //    if (_chansons.Equals(pChanson))
-            //        return true;
-            //}
-            //catch(ArgumentNullException estNull)
-            //{
-            //    throw estNull;
-            //}
-            
-            //return false;
 
         }
 
-        //public Chanson ObtenirChanson(byte index)
-        //{
-        //    try
-        //    {
-        //        _position = index;
-        //        int i = 0;
-
-        //        foreach (Chanson pChanson in _chansons)
-        //        {
-        //            if (i == _position)
-        //            {
-        //                return pChanson;
-        //            }
-        //        }
-        //    }
-        //    catch(IndexOutOfRangeException outOfRange)
-        //    {
-        //        throw outOfRange;
-        //    }
-            
-        //}
+       
 
         
 
@@ -395,9 +363,10 @@ namespace TP2_420_14B_FX.Classes
         public void AjouterChanson(Chanson pChanson)
         {
             if (ChansonExiste(pChanson))
-            {
                 throw new Exception("La chanson existe déjà dans l'album");
-            }
+            else if (pChanson is null)
+                throw new ArgumentNullException("La chanson est null");
+            else
             _chansons.Add(pChanson);
             
         }
@@ -409,7 +378,11 @@ namespace TP2_420_14B_FX.Classes
         /// <returns>Return vrai si elle a été bien supprimé sinon faux si elle n'a pas été supprimé</returns>
         public bool SupprimerChanson(Chanson pChanson)
         {
-            if (ChansonExiste(pChanson))
+            if(pChanson is null)
+            {
+                throw new ArgumentNullException("La chanson est null");
+            }
+            else if (ChansonExiste(pChanson))
             {
                 _chansons.Remove(pChanson);
                 return true;
