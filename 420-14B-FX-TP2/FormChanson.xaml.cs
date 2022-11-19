@@ -140,7 +140,7 @@ namespace TP2_420_14B_FX
                         TimeSpan duree = TimeSpan.Parse((string)lblDuree.Content);
                         string fichier = guid + ".mp3";
                         ChansonAjoutModif = new Chanson(guid, titre, style, duree, fichier);
-
+                        DialogResult = true;
                     }
 
                 }
@@ -158,13 +158,13 @@ namespace TP2_420_14B_FX
                         ChansonAjoutModif.Titre = titre;
                         ChansonAjoutModif.Style = style;
                         ChansonAjoutModif.Duree = duree;
-
+                        DialogResult = true;
 
 
                     }
                 }
 
-                DialogResult = true;
+                
             }
             catch (ArgumentNullException ane)
             {
