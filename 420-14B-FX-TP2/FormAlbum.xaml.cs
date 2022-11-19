@@ -66,8 +66,8 @@ namespace TP2_420_14B_FX
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="sender">Objet</param>
-        /// <param name="e">Event</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             InitialiserFormulaire();
@@ -145,8 +145,8 @@ namespace TP2_420_14B_FX
         /// <summary>
         /// Ajoute ou modifie un album
         /// </summary>
-        /// <param name="sender">Objet</param>
-        /// <param name="e">Event</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAjouterModifier_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -226,8 +226,8 @@ namespace TP2_420_14B_FX
         /// <summary>
         /// Bouton qui permet l'utilisateur de parcourir ses dossiers pour une images pour son album
         /// </summary>
-        /// <param name="sender">Un objet</param>
-        /// <param name="e">Event</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnParcourir_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -272,8 +272,8 @@ namespace TP2_420_14B_FX
         /// <summary>
         /// Annule la modidification ou l'ajout d'un album
         /// </summary>
-        /// <param name="sender">Un obejet</param>
-        /// <param name="e">Event</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
             if(MessageBox.Show("Voulez-vous vraiment annuler?", "Annuler", MessageBoxButton.YesNo, 
